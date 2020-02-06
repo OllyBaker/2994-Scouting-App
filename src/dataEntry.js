@@ -204,12 +204,9 @@ export default class DataEntry extends React.Component {
 			</Row>)
 		
 
-		let teleopRockets = [];
-		let key = 0;
-		for (let i = 0; i < dataNames.rocketCargo.length; i++) {
-			teleopRockets.push(<Row key={key++}>
-				<Text style={[styles.font.subHeader]}>Inner Port {(i + 1).toString()}</Text>
-			</Row>)
+			<Row>
+				<Text style={[styles.font.subHeader]}>Control Panel Manipulation</Text>
+			</Row>
 			teleopRockets.push(<Row style={{ paddingBottom: 5 }} key={key++}>
 				<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Cargo"} style={dataEntryStyles.gamePieceInput}>
 					<inputs.SliderInput step={1} minimumValue={0} maximumValue={4} value={this.props.data[dataNames.rocketCargo[i]]} options={gamePieceOptions}
@@ -328,7 +325,7 @@ export default class DataEntry extends React.Component {
 						Tele-op
 					</Text>
 				</Row>
-				{teleopRockets}
+			{teleopRockets}
 
 				<Row style={{ paddingTop: headingPadding }}>
 					<Text style={dataEntryStyles.header}>
