@@ -149,9 +149,9 @@ export default class DataEntry extends React.Component {
 	render() {
 		if (this.state.dead) return <View></View>
 		let sandstormRockets = [];
-		for (let i = 0; i < dataNames.cargo.length; i++) {
-			sandstormRockets.push(<Row key={i}>
-				<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Hatch " + (i + 1)} style={dataEntryStyles.gamePieceInput}>
+		
+			sandstormRockets.push(<Row key={20}>
+				{/* <inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Hatch " + (i + 1)} style={dataEntryStyles.gamePieceInput}>
 					<inputs.PickerInput value={this.props.data[dataNames.hatch[i]]} options={gamePieceOptions}
 						onValueChange={(selected) => this.dataUpdated(selected, dataNames.hatch[i])}
 						style={{
@@ -160,11 +160,38 @@ export default class DataEntry extends React.Component {
 									styles.colors.tertiary.bg : styles.colors.secondary.bg
 						}}
 					></inputs.PickerInput>
-				</inputs.LabeledInput>
+				</inputs.LabeledInput> */}
+				
+				<Spacer></Spacer>
+
+				<Row>
+					<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"# of Balls shot into Lowl"} style={dataEntryStyles.gamePieceInput}>
+						<inputs.ClickerInput value={this.props.data[dataNames.gameInfo.hatchesDropped]} onValueChange={(value) => this.dataUpdated(value, dataNames.gameInfo.hatchesDropped)}>
+						</inputs.ClickerInput>
+					</inputs.LabeledInput>
+				</Row>
 
 				<Spacer></Spacer>
 
-				<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Cargo " + (i + 1)} style={dataEntryStyles.gamePieceInput}>
+				<Row>
+					<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"# of Balls shot into High Goal"} style={dataEntryStyles.gamePieceInput}>
+						<inputs.ClickerInput value={this.props.data[dataNames.gameInfo.hatchesDropped]} onValueChange={(value) => this.dataUpdated(value, dataNames.gameInfo.hatchesDropped)}>
+						</inputs.ClickerInput>
+					</inputs.LabeledInput>
+				</Row>
+
+				<Spacer></Spacer>
+
+				<Row>
+					<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"# of Balls Missed"} style={dataEntryStyles.gamePieceInput}>
+						<inputs.ClickerInput value={this.props.data[dataNames.gameInfo.hatchesDropped]} onValueChange={(value) => this.dataUpdated(value, dataNames.gameInfo.hatchesDropped)}>
+						</inputs.ClickerInput>
+					</inputs.LabeledInput>
+				</Row>
+
+				<Spacer></Spacer>
+
+				{/* <inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Cargo " + (i + 1)} style={dataEntryStyles.gamePieceInput}>
 					<inputs.PickerInput value={this.props.data[dataNames.cargo[i]]} options={gamePieceOptions}
 						onValueChange={(selected) => this.dataUpdated(selected, dataNames.cargo[i])}
 						style={{
@@ -173,9 +200,9 @@ export default class DataEntry extends React.Component {
 									styles.colors.tertiary.bg : styles.colors.secondary.bg
 						}}
 					></inputs.PickerInput>
-				</inputs.LabeledInput>
+				</inputs.LabeledInput> */}
 			</Row>)
-		}
+		
 
 		let teleopRockets = [];
 		let key = 0;
