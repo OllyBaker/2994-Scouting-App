@@ -326,9 +326,23 @@ export default class DataEntry extends React.Component {
 				<Row style={{ paddingTop: headingPadding }}>
 					<Text style={dataEntryStyles.header}>
 						Tele-op
-					</Text>
+					</Text> 
 				</Row>
-				{teleopRockets}
+				{/* {teleopRockets} */}
+				<Row>
+					<Text style={[styles.font.subHeader]}>Control Panel Manipulation</Text>
+				</Row>
+				<Row style={{ paddingBottom: 5 }}>
+					<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Rotation Control?"} style={dataEntryStyles.gamePieceInput}>
+						<inputs.PickerInput value={this.props.data[dataNames.startLevel[0]]} options={rotationControl} onValueChange={(selected) => this.dataUpdated(selected, dataNames.startLevel[0])}
+							style={{
+								backgroundColor:
+									this.props.data[dataNames.startLevel[0]] == rotationControl[0] ?
+										styles.colors.tertiary.bg : styles.colors.secondary.bg
+							}}
+						></inputs.PickerInput>
+					</inputs.LabeledInput>
+				</Row>
 
 				<Row style={{ paddingTop: headingPadding }}>
 					<Text style={dataEntryStyles.header}>
