@@ -4,7 +4,7 @@ import styles from './styles'
 import * as inputs from './inputs'
 import MatchList from './listMatches'
 import { addMatchStyles } from './addMatch'
-import { startLevelOptions, dataNames, dataTypes, assistOptions, gamePieceOptions, climbOptions, defaultAssistOption, defaultClimbOption, defaultGamePieceOption } from './dataMap'
+import { startLevelOptions, dataNames, dataTypes, assistOptions, gamePieceOptions, climbOptions, defaultAssistOption, defaultClimbOption, defaultGamePieceOption, initiationLineOptions, rotationControl } from './dataMap'
 
 const headingPadding = 50;
 
@@ -198,44 +198,16 @@ export default class DataEntry extends React.Component {
 		</Row>);
 
 		let teleopRockets = [];
-
-		teleopRockets.push(<Row style={{ paddingBottom: 5 }} key={key++}>
+		
+		teleopRockets.push(<Row style={{ paddingBottom: 5 }} >
 			<Text style={[styles.font.subHeader]}>Control Panel Manipulation</Text>
-			teleopRockets.push(<Row style={{ paddingBottom: 5 }} key={key++}>
-				<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Cargo"} style={dataEntryStyles.gamePieceInput}>
-					<inputs.SliderInput step={1} minimumValue={0} maximumValue={4} value={this.props.data[dataNames.rocketCargo[i]]} options={gamePieceOptions}
-						onValueChange={(value) => this.dataUpdated(value, dataNames.rocketCargo[i])}
-					></inputs.SliderInput>
-				</inputs.LabeledInput>
-			</Row>);
+	
 
-			teleopRockets.push(<Row style={{ paddingBottom: 5 }} key={key++}>
-				<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Hatch"} style={dataEntryStyles.gamePieceInput}>
-					<inputs.SliderInput step={1} minimumValue={0} maximumValue={4} value={this.props.data[dataNames.rocketHatch[i]]} options={gamePieceOptions}
-						onValueChange={(value) => this.dataUpdated(value, dataNames.rocketHatch[i])}
-					></inputs.SliderInput>
-				</inputs.LabeledInput>
-			</Row>);
+
 	}
 
-		teleopRockets.push(<Row key={key++}>
-				<Text style={[styles.font.subHeader]}>Cargo Ship</Text>
-			</Row>)
-		teleopRockets.push(<Row style={{ paddingBottom: 5 }} key={key++}>
-				<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Cargo"} style={dataEntryStyles.gamePieceInput}>
-					<inputs.SliderInput step={1} minimumValue={0} maximumValue={8} value={this.props.data[dataNames.shipCargo[0]]} options={gamePieceOptions}
-						onValueChange={(value) => this.dataUpdated(value, dataNames.shipCargo[0])}
-					></inputs.SliderInput>
-				</inputs.LabeledInput>
-			</Row>)
+
 	
-		teleopRockets.push(<Row style={{ paddingBottom: 5 }} key={key++}>
-				<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Hatch"} style={dataEntryStyles.gamePieceInput}>
-					<inputs.SliderInput step={1} minimumValue={0} maximumValue={8} value={this.props.data[dataNames.shipHatch[0]]} options={gamePieceOptions}
-						onValueChange={(value) => this.dataUpdated(value, dataNames.shipHatch[0])}
-					></inputs.SliderInput>
-				</inputs.LabeledInput>
-			</Row>);
 		</Row>);
 
 		let climbing = (
