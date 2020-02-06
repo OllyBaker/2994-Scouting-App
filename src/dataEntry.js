@@ -174,6 +174,24 @@ export default class DataEntry extends React.Component {
 				<Spacer></Spacer>
 
 				<Row>
+					<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Lower Port"} style={dataEntryStyles.gamePieceInput}>
+						<inputs.ClickerInput value={this.props.data[dataNames.gameInfo.hatchesDropped]} onValueChange={(value) => this.dataUpdated(value, dataNames.gameInfo.hatchesDropped)}>
+						</inputs.ClickerInput>
+					</inputs.LabeledInput>
+				</Row>
+
+				<Spacer></Spacer>
+
+				<Row>
+					<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Missed Shots"} style={dataEntryStyles.gamePieceInput}>
+						<inputs.ClickerInput value={this.props.data[dataNames.gameInfo.hatchesDropped]} onValueChange={(value) => this.dataUpdated(value, dataNames.gameInfo.hatchesDropped)}>
+						</inputs.ClickerInput>
+					</inputs.LabeledInput>
+				</Row>
+
+				<Spacer></Spacer>
+
+				<Row>
 					<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"# of Balls shot into High Goal"} style={dataEntryStyles.gamePieceInput}>
 						<inputs.ClickerInput value={this.props.data[dataNames.gameInfo.hatchesDropped]} onValueChange={(value) => this.dataUpdated(value, dataNames.gameInfo.hatchesDropped)}>
 						</inputs.ClickerInput>
