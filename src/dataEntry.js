@@ -149,64 +149,58 @@ export default class DataEntry extends React.Component {
 	render() {
 		if (this.state.dead) return <View></View>
 		let autonomous = [];
-		
-			sandstormRockets.push(<Row key={20}>
-				{/* <inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Hatch " + (i + 1)} style={dataEntryStyles.gamePieceInput}>
-					<inputs.PickerInput value={this.props.data[dataNames.hatch[i]]} options={gamePieceOptions}
-						onValueChange={(selected) => this.dataUpdated(selected, dataNames.hatch[i])}
+
+		autonomous.push(<Row key={20}>
+			<Spacer></Spacer>
+			<Row style={{ paddingBottom: 5 }}>
+				<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Initiation Line Crossed"} style={dataEntryStyles.gamePieceInput}>
+					<inputs.PickerInput value={this.props.data[dataNames.startLevel[0]]} options={initiationLineOptions} onValueChange={(selected) => this.dataUpdated(selected, dataNames.startLevel[0])}
 						style={{
 							backgroundColor:
-								this.props.data[dataNames.hatch[i]] == gamePieceOptions[defaultGamePieceOption] ?
+								this.props.data[dataNames.startLevel[0]] == startLevelOptions[0] ?
 									styles.colors.tertiary.bg : styles.colors.secondary.bg
 						}}
 					></inputs.PickerInput>
-				</inputs.LabeledInput> */}
-				
-				<Spacer></Spacer>
-
-				<Row>
-					<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Outer Port"} style={dataEntryStyles.gamePieceInput}>
-						<inputs.ClickerInput value={this.props.data[dataNames.gameInfo.hatchesDropped]} onValueChange={(value) => this.dataUpdated(value, dataNames.gameInfo.hatchesDropped)}>
-						</inputs.ClickerInput>
-					</inputs.LabeledInput>
-				</Row>
-
-				<Spacer></Spacer>
-
-				<Row>
-					<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"# of Balls shot into High Goal"} style={dataEntryStyles.gamePieceInput}>
-						<inputs.ClickerInput value={this.props.data[dataNames.gameInfo.hatchesDropped]} onValueChange={(value) => this.dataUpdated(value, dataNames.gameInfo.hatchesDropped)}>
-						</inputs.ClickerInput>
-					</inputs.LabeledInput>
-				</Row>
-
-				<Spacer></Spacer>
-
-				<Row>
-					<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"# of Balls Missed"} style={dataEntryStyles.gamePieceInput}>
-						<inputs.ClickerInput value={this.props.data[dataNames.gameInfo.hatchesDropped]} onValueChange={(value) => this.dataUpdated(value, dataNames.gameInfo.hatchesDropped)}>
-						</inputs.ClickerInput>
-					</inputs.LabeledInput>
-				</Row>
-
-				<Spacer></Spacer>
-
-				{/* <inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Cargo " + (i + 1)} style={dataEntryStyles.gamePieceInput}>
-					<inputs.PickerInput value={this.props.data[dataNames.cargo[i]]} options={gamePieceOptions}
-						onValueChange={(selected) => this.dataUpdated(selected, dataNames.cargo[i])}
-						style={{
-							backgroundColor:
-								this.props.data[dataNames.cargo[i]] == gamePieceOptions[defaultGamePieceOption] ?
-									styles.colors.tertiary.bg : styles.colors.secondary.bg
-						}}
-					></inputs.PickerInput>
-				</inputs.LabeledInput> */}
-			</Row>)
-		
+				</inputs.LabeledInput>
+			</Row>
 
 			<Row>
-				<Text style={[styles.font.subHeader]}>Control Panel Manipulation</Text>
+				<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Lower Port"} style={dataEntryStyles.gamePieceInput}>
+					<inputs.ClickerInput value={this.props.data[dataNames.gameInfo.hatchesDropped]} onValueChange={(value) => this.dataUpdated(value, dataNames.gameInfo.hatchesDropped)}>
+					</inputs.ClickerInput>
+				</inputs.LabeledInput>
 			</Row>
+
+			<Spacer></Spacer>
+
+			<Row>
+				<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Outer (upper) Port"} style={dataEntryStyles.gamePieceInput}>
+					<inputs.ClickerInput value={this.props.data[dataNames.gameInfo.hatchesDropped]} onValueChange={(value) => this.dataUpdated(value, dataNames.gameInfo.hatchesDropped)}>
+					</inputs.ClickerInput>
+				</inputs.LabeledInput>
+			</Row>
+
+			<Spacer></Spacer>
+
+			<Row>
+				<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Shots Missed"} style={dataEntryStyles.gamePieceInput}>
+					<inputs.ClickerInput value={this.props.data[dataNames.gameInfo.hatchesDropped]} onValueChange={(value) => this.dataUpdated(value, dataNames.gameInfo.hatchesDropped)}>
+					</inputs.ClickerInput>
+				</inputs.LabeledInput>
+			</Row>
+
+			<Row>
+				<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Shots Blocked"} style={dataEntryStyles.gamePieceInput}>
+					<inputs.ClickerInput value={this.props.data[dataNames.gameInfo.hatchesDropped]} onValueChange={(value) => this.dataUpdated(value, dataNames.gameInfo.hatchesDropped)}>
+					</inputs.ClickerInput>
+				</inputs.LabeledInput>
+			</Row>
+		</Row>);
+
+		let teleopRockets = [];
+
+		teleopRockets.push(<Row style={{ paddingBottom: 5 }} key={key++}>
+			<Text style={[styles.font.subHeader]}>Control Panel Manipulation</Text>
 			teleopRockets.push(<Row style={{ paddingBottom: 5 }} key={key++}>
 				<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Cargo"} style={dataEntryStyles.gamePieceInput}>
 					<inputs.SliderInput step={1} minimumValue={0} maximumValue={4} value={this.props.data[dataNames.rocketCargo[i]]} options={gamePieceOptions}
@@ -222,28 +216,30 @@ export default class DataEntry extends React.Component {
 					></inputs.SliderInput>
 				</inputs.LabeledInput>
 			</Row>);
-		}
-		teleopRockets.push(<Row key={key++}>
-			<Text style={[styles.font.subHeader]}>Cargo Ship</Text>
-		</Row>)
-		teleopRockets.push(<Row style={{ paddingBottom: 5 }} key={key++}>
-			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Cargo"} style={dataEntryStyles.gamePieceInput}>
-				<inputs.SliderInput step={1} minimumValue={0} maximumValue={8} value={this.props.data[dataNames.shipCargo[0]]} options={gamePieceOptions}
-					onValueChange={(value) => this.dataUpdated(value, dataNames.shipCargo[0])}
-				></inputs.SliderInput>
-			</inputs.LabeledInput>
-		</Row>)
+	}
 
+		teleopRockets.push(<Row key={key++}>
+				<Text style={[styles.font.subHeader]}>Cargo Ship</Text>
+			</Row>)
 		teleopRockets.push(<Row style={{ paddingBottom: 5 }} key={key++}>
-			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Hatch"} style={dataEntryStyles.gamePieceInput}>
-				<inputs.SliderInput step={1} minimumValue={0} maximumValue={8} value={this.props.data[dataNames.shipHatch[0]]} options={gamePieceOptions}
-					onValueChange={(value) => this.dataUpdated(value, dataNames.shipHatch[0])}
-				></inputs.SliderInput>
-			</inputs.LabeledInput>
+				<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Cargo"} style={dataEntryStyles.gamePieceInput}>
+					<inputs.SliderInput step={1} minimumValue={0} maximumValue={8} value={this.props.data[dataNames.shipCargo[0]]} options={gamePieceOptions}
+						onValueChange={(value) => this.dataUpdated(value, dataNames.shipCargo[0])}
+					></inputs.SliderInput>
+				</inputs.LabeledInput>
+			</Row>)
+	
+		teleopRockets.push(<Row style={{ paddingBottom: 5 }} key={key++}>
+				<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Hatch"} style={dataEntryStyles.gamePieceInput}>
+					<inputs.SliderInput step={1} minimumValue={0} maximumValue={8} value={this.props.data[dataNames.shipHatch[0]]} options={gamePieceOptions}
+						onValueChange={(value) => this.dataUpdated(value, dataNames.shipHatch[0])}
+					></inputs.SliderInput>
+				</inputs.LabeledInput>
+			</Row>);
 		</Row>);
 
 		let climbing = (
-			
+
 			<Row>
 				<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Level reached"} style={dataEntryStyles.gamePieceInput}>
 					<inputs.PickerInput value={this.props.data[dataNames.climbing.levelReached]} options={climbOptions}
@@ -307,25 +303,14 @@ export default class DataEntry extends React.Component {
 						Autonomous
 					</Text>
 				</Row>
-				<Row style={{ paddingBottom: 5 }}>
-					<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Initiation Line"} style={dataEntryStyles.gamePieceInput}>
-						<inputs.PickerInput value={this.props.data[dataNames.startLevel[0]]} options={initiationLineOptions} onValueChange={(selected) => this.dataUpdated(selected, dataNames.startLevel[0])}
-							style={{
-								backgroundColor:
-									this.props.data[dataNames.startLevel[0]] == startLevelOptions[0] ?
-										styles.colors.tertiary.bg : styles.colors.secondary.bg
-							}}
-						></inputs.PickerInput>
-					</inputs.LabeledInput>
-				</Row>
 				{autonomous}
 
 				<Row style={{ paddingTop: headingPadding }}>
 					<Text style={dataEntryStyles.header}>
 						Tele-op
-					</Text> 
+					</Text>
 				</Row>
-				{/* {teleopRockets} */}
+				{teleopRockets}
 				<Row>
 					<Text style={[styles.font.subHeader]}>Control Panel Manipulation</Text>
 				</Row>
@@ -340,7 +325,6 @@ export default class DataEntry extends React.Component {
 						></inputs.PickerInput>
 					</inputs.LabeledInput>
 				</Row>
-			{teleopRockets}
 
 				<Row style={{ paddingTop: headingPadding }}>
 					<Text style={dataEntryStyles.header}>
