@@ -43,10 +43,9 @@ export const assistOptions = [
 	"Level 3"
 ]
 
-export const startLevelOptions = [
-	"Didn't cross baseline",
-	"Level 1",
-	"Level 2"
+export const initiationLineOptions = [
+	"Didn't cross",
+	"Crossed"
 ]
 export const defaultAssistOption = 0;
 
