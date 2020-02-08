@@ -189,7 +189,7 @@ export default class DataEntry extends React.Component {
 			teleopRockets.push(<Row key={key++}>
 				<Row>
 					<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Fuel Cells Scored in Low Port"} style={dataEntryStyles.gamePieceInput}>
-						<inputs.ClickerInput value={this.props.data[dataNames.shooting.teleLow]} onValueChange={(value) => this.dataUpdated(value, dataNames.teleLow)}>
+						<inputs.ClickerInput value={this.props.data[dataNames.shooting.teleLow]} onValueChange={(value) => this.dataUpdated(value, dataNames.shooting.teleLow)}>
 						</inputs.ClickerInput>
 					</inputs.LabeledInput>
 				</Row>
@@ -198,20 +198,16 @@ export default class DataEntry extends React.Component {
 		
 
 		teleopRockets.push(<Row key={key++}>
-			<Row>
 				<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Fuel Cells Scored in High Port"} style={dataEntryStyles.gamePieceInput}>
 					<inputs.ClickerInput value={this.props.data[dataNames.shooting.teleHigh]} onValueChange={(value) => this.dataUpdated(value, dataNames.shooting.teleHigh)}>
 					</inputs.ClickerInput>
 				</inputs.LabeledInput>
-			</Row>
 		</Row>)
 		teleopRockets.push(<Row key={key++}>
-			<Row>
 				<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"# of balls missed"} style={dataEntryStyles.gamePieceInput}>
-					<inputs.ClickerInput value={this.props.data[dataNames.shooting.teleMissed]} onValueChange={(value) => this.dataUpdated(value, dataNames.teleHigh)}>
+					<inputs.ClickerInput value={this.props.data[dataNames.shooting.teleMissed]} onValueChange={(value) => this.dataUpdated(value, dataNames.shooting.teleMissed)}>
 					</inputs.ClickerInput>
 				</inputs.LabeledInput>
-			</Row>
 		</Row>)
 		// END OF TELEOP
 		
@@ -246,7 +242,7 @@ export default class DataEntry extends React.Component {
 				</inputs.LabeledInput> */}
 			</Row>)
 		
-		// END OF CLIMBING
+		// END OF CLIMBING-+-
 		return (<View key={0} style={{ width: "100%", flex: 1, flexDirection: "column" }}>
 			{/* Submit and cancel buttons */}
 			<Row>
