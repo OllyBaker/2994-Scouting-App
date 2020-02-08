@@ -4,7 +4,7 @@ import styles from './styles'
 import * as inputs from './inputs'
 import MatchList from './listMatches'
 import { addMatchStyles } from './addMatch'
-import { startLevelOptions, dataNames, dataTypes, assistOptions, gamePieceOptions, threeOptions, climbOptions, defaultAssistOption, defaultClimbOption, defaultGamePieceOption, defaultThreeOptions } from './dataMap'
+import { startLevelOptions, dataNames, dataTypes, assistOptions, gamePieceOptions, threeOptions, climbOptions, defaultAssistOption, defaultClimbOption, defaultGamePieceOption, defaultThreeOptions, powerCellPickup, controlPanel } from './dataMap'
 
 const headingPadding = 50;
 
@@ -190,7 +190,7 @@ export default class DataEntry extends React.Component {
 		
 			teleopRockets.push(<Row key={key++}>
 				<Row>
-					<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Fuel Cells Scored in Low Port"} style={dataEntryStyles.gamePieceInput}>
+					<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Low Port Scored"} style={dataEntryStyles.gamePieceInput}>
 						<inputs.ClickerInput value={this.props.data[dataNames.shooting.teleLow]} onValueChange={(value) => this.dataUpdated(value, dataNames.shooting.teleLow)}>
 						</inputs.ClickerInput>
 					</inputs.LabeledInput>
@@ -200,17 +200,79 @@ export default class DataEntry extends React.Component {
 		
 
 		teleopRockets.push(<Row key={key++}> 
-				<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Fuel Cells Scored in High Port"} style={dataEntryStyles.gamePieceInput}>
+				<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"High Port Scored"} style={dataEntryStyles.gamePieceInput}>
 					<inputs.ClickerInput value={this.props.data[dataNames.shooting.teleHigh]} onValueChange={(value) => this.dataUpdated(value, dataNames.shooting.teleHigh)}>
 					</inputs.ClickerInput>
 				</inputs.LabeledInput>
 		</Row>)
 		teleopRockets.push(<Row key={key++}>
-				<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"# of balls missed"} style={dataEntryStyles.gamePieceInput}>
+				<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Shots Missed"} style={dataEntryStyles.gamePieceInput}>
 					<inputs.ClickerInput value={this.props.data[dataNames.shooting.teleMissed]} onValueChange={(value) => this.dataUpdated(value, dataNames.shooting.teleMissed)}>
 					</inputs.ClickerInput>
 				</inputs.LabeledInput>
 		</Row>)
+		teleopRockets.push(<Row key={key++}>
+			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Shots Blocked"} style={dataEntryStyles.gamePieceInput}>
+				<inputs.ClickerInput value={this.props.data[dataNames.shooting.teleBlocked]} onValueChange={(value) => this.dataUpdated(value, dataNames.shooting.teleBlocked)}>
+				</inputs.ClickerInput>
+			</inputs.LabeledInput>
+		</Row>)
+
+		teleopRockets.push(<Row key={key++}>
+			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"CP Rotation Control"} style={dataEntryStyles.gamePieceInput}>
+				<inputs.PickerInput value={this.props.data[dataNames.controlPanel.rotationControl]} options={threeOptions}
+					onValueChange={(selected) => this.dataUpdated(selected, dataNames.controlPanel.rotationControl)}
+					style={{
+						backgroundColor:
+							this.props.data[dataNames.climbing.assist] == climbOptions[defaultThreeOptions] ?
+								styles.colors.tertiary.bg : styles.colors.secondary.bg
+					}}
+				></inputs.PickerInput>
+			</inputs.LabeledInput>
+		</Row>)
+
+		teleopRockets.push(<Row key={key++}>
+			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Time Engaged for CP Rotation"} style={dataEntryStyles.gamePieceInput}>
+				<inputs.TimeInput value={this.props.data[dataNames.gameInfo.rotationTime]} onValueChange={(value) => this.dataUpdated(value, dataNames.gameInfo.rotationTime)}>
+				</inputs.TimeInput>
+			</inputs.LabeledInput>
+		</Row>)
+
+		teleopRockets.push(<Row key={key++}>
+			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"CP Position Control"} style={dataEntryStyles.gamePieceInput}>
+				<inputs.PickerInput value={this.props.data[dataNames.controlPanel.positionControl]} options={threeOptions}
+					onValueChange={(selected) => this.dataUpdated(selected, dataNames.controlPanel.positionControl)}
+					style={{
+						backgroundColor:
+							this.props.data[dataNames.climbing.assist] == climbOptions[defaultThreeOptions] ?
+								styles.colors.tertiary.bg : styles.colors.secondary.bg
+					}}
+				></inputs.PickerInput>
+			</inputs.LabeledInput>
+		</Row>)
+
+		teleopRockets.push(<Row key={key++}>
+			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Time Engaged for CP Position"} style={dataEntryStyles.gamePieceInput}>
+				<inputs.TimeInput value={this.props.data[dataNames.gameInfo.positionTime]} onValueChange={(value) => this.dataUpdated(value, dataNames.gameInfo.positionTime)}>
+				</inputs.TimeInput>
+			</inputs.LabeledInput>
+		</Row>)
+
+		teleopRockets.push(<Row key={key++}>
+			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Power Cells picked up from ground"} style={dataEntryStyles.gamePieceInput}>
+				<inputs.ClickerInput value={this.props.data[dataNames.powerCellPickup.fromGround]} onValueChange={(value) => this.dataUpdated(value, dataNames.powerCellPickup.fromGround)}>
+				</inputs.ClickerInput>
+			</inputs.LabeledInput>
+		</Row>)
+		
+		teleopRockets.push(<Row key={key++}>
+			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Power Cells picked up from loading"} style={dataEntryStyles.gamePieceInput}>
+				<inputs.ClickerInput value={this.props.data[dataNames.powerCellPickup.fromLoading]} onValueChange={(value) => this.dataUpdated(value, dataNames.powerCellPickup.fromLoading)}>
+				</inputs.ClickerInput>
+			</inputs.LabeledInput>
+		</Row>)
+
+
 		// END OF TELEOP
 		
 		// START OF ENDGAME
