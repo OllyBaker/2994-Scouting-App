@@ -1,13 +1,9 @@
-<<<<<<< HEAD
 {
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 16404,
-  "expoServerNgrokUrl": "https://9a-5ni.anonymous.2994-scouting-app.exp.direct",
-  "packagerNgrokUrl": "https://packager.9a-5ni.anonymous.2994-scouting-app.exp.direct",
-  "ngrokPid": 11168
+  "packagerPid": 18236,
+  "expoServerNgrokUrl": "https://um-e5m.anonymous.2994-scouting-app.exp.direct",
+  "packagerNgrokUrl": "https://packager.um-e5m.anonymous.2994-scouting-app.exp.direct",
+  "ngrokPid": 18380
 }
-=======
-{}
->>>>>>> f9a667e3ad878aa8e30309767586e3f36b03b2dc
