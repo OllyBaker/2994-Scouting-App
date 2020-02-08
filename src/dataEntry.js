@@ -4,7 +4,7 @@ import styles from './styles'
 import * as inputs from './inputs'
 import MatchList from './listMatches'
 import { addMatchStyles } from './addMatch'
-import { startLevelOptions, dataNames, dataTypes, assistOptions, gamePieceOptions, threeOptions, climbOptions, defaultAssistOption, defaultClimbOption, defaultGamePieceOption, defaultThreeOptions, powerCellPickup, controlPanel,startLevel,crossedInitiation } from './dataMap'
+import { startLevelOptions, dataNames, dataTypes, assistOptions, gamePieceOptions, threeOptions, climbOptions, defaultAssistOption, defaultClimbOption, defaultGamePieceOption, defaultThreeOptions, powerCellPickup, fromGround, fromLoading, controlPanel,startLevel,crossedInitiation, autoMissed, autoBlocked, autoHigh, autoLow, teleNotes, autoNotes,  } from './dataMap'
 import { TextInput } from 'react-native';
 const headingPadding = 50;
 
@@ -149,6 +149,7 @@ export default class DataEntry extends React.Component {
 
 		// START OF AUTONOMOUS
 		let sandstormRockets = [];
+		let key = 0;
 
 		sandstormRockets.push(<Row key={key++}>
 			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Crossed Initiation Line"} style={dataEntryStyles.gamePieceInput}>
@@ -182,7 +183,7 @@ export default class DataEntry extends React.Component {
 		sandstormRockets.push(<Row key={key++}>
 
 			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Shots Missed"} style={dataEntryStyles.gamePieceInput}>
-				<inputs.ClickerInput value={this.props.data[dataNames.shooting.autoMissed]} onValueChange={(value) => this.dataUpdated(value, dataNames.autoMissed)}>
+				<inputs.ClickerInput value={this.props.data[dataNames.shooting.autoMissed]} onValueChange={(value) => this.dataUpdated(value, dataNames.shooting.autoMissed)}>
 				</inputs.ClickerInput>
 			</inputs.LabeledInput>
 		</Row>)
@@ -204,21 +205,18 @@ export default class DataEntry extends React.Component {
 
 		// START OF TELEOP
 		let teleopRockets = [];
-		let key = 0;
 
 		teleopRockets.push(<Row key={key++}>
 			<Row>
-				<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Low Port Scored"} style={dataEntryStyles.gamePieceInput}>
+				<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Low Port Goals"} style={dataEntryStyles.gamePieceInput}>
 					<inputs.ClickerInput value={this.props.data[dataNames.shooting.teleLow]} onValueChange={(value) => this.dataUpdated(value, dataNames.shooting.teleLow)}>
 					</inputs.ClickerInput>
 				</inputs.LabeledInput>
 			</Row>
 		</Row>)
 
-
-
 		teleopRockets.push(<Row key={key++}>
-			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"High Port Scored"} style={dataEntryStyles.gamePieceInput}>
+			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"High Port Goals"} style={dataEntryStyles.gamePieceInput}>
 				<inputs.ClickerInput value={this.props.data[dataNames.shooting.teleHigh]} onValueChange={(value) => this.dataUpdated(value, dataNames.shooting.teleHigh)}>
 				</inputs.ClickerInput>
 			</inputs.LabeledInput>
@@ -287,6 +285,20 @@ export default class DataEntry extends React.Component {
 			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Power Cells picked up from loading"} style={dataEntryStyles.gamePieceInput}>
 				<inputs.ClickerInput value={this.props.data[dataNames.powerCellPickup.fromLoading]} onValueChange={(value) => this.dataUpdated(value, dataNames.powerCellPickup.fromLoading)}>
 				</inputs.ClickerInput>
+			</inputs.LabeledInput>
+		</Row>)
+
+		teleopRockets.push(<Row style={{ paddingBottom: 5 }} key={key++}>
+			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Power Cell Capacity"} style={dataEntryStyles.gamePieceInput}>
+				<inputs.SliderInput step={1} minimumValue={0} maximumValue={5} value={this.props.data[dataNames.attributes.powerCellCapacity]} options={gamePieceOptions}
+					onValueChange={(value) => this.dataUpdated(value, dataNames.attributes.powerCellCapacity)}>
+				</inputs.SliderInput>
+			</inputs.LabeledInput>
+		</Row>);
+
+		teleopRockets.push(<Row key={key++}>
+			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"TeleOp Notes"} style={dataEntryStyles.gamePieceInput}>
+				<inputs.NoteInput style={dataEntryStyles.gamePieceInput} text="TeleOp Notes" onChangeText={(text) => this.dataUpdated(text, dataNames.gameNotes.teleNotes)}></inputs.NoteInput>
 			</inputs.LabeledInput>
 		</Row>)
 
@@ -359,6 +371,17 @@ export default class DataEntry extends React.Component {
 			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Time to Climb"} style={dataEntryStyles.gamePieceInput}>
 				<inputs.TimeInput value={this.props.data[dataNames.gameInfo.climbingTime]} onValueChange={(value) => this.dataUpdated(value, dataNames.gameInfo.climbingTime)}>
 				</inputs.TimeInput>
+			</inputs.LabeledInput>
+		</Row>)
+
+		climbing.push(<Row key={key++}>
+			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Time remaining when hung"} style={dataEntryStyles.gamePieceInput}>
+				<inputs.NoteInput style={dataEntryStyles.gamePieceInput} text="enter amount of time once successfully hung" onChangeText={(text) => this.dataUpdated(text, dataNames.gameNotes.timeRemainingHung)}></inputs.NoteInput>
+			</inputs.LabeledInput>
+		</Row>)
+		climbing.push(<Row key={key++}>
+			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Endgame Notes"} style={dataEntryStyles.gamePieceInput}>
+				<inputs.NoteInput style={dataEntryStyles.gamePieceInput} text="Other userful information" onChangeText={(text) => this.dataUpdated(text, dataNames.gameNotes.climbNotes)}></inputs.NoteInput>
 			</inputs.LabeledInput>
 		</Row>)
 
