@@ -4,7 +4,7 @@ import styles from './styles'
 import * as inputs from './inputs'
 import MatchList from './listMatches'
 import { addMatchStyles } from './addMatch'
-import { startLevelOptions, dataNames, dataTypes, assistOptions, gamePieceOptions, threeOptions, climbOptions, defaultAssistOption, defaultClimbOption, defaultGamePieceOption, defaultThreeOptions, powerCellPickup, controlPanel } from './dataMap'
+import { startLevelOptions, dataNames, dataTypes, assistOptions, gamePieceOptions, threeOptions, climbOptions, defaultAssistOption, defaultClimbOption, defaultGamePieceOption, defaultThreeOptions, powerCellPickup, controlPanel, fromGround, fromLoading } from './dataMap'
 
 const headingPadding = 50;
 
@@ -181,13 +181,19 @@ export default class DataEntry extends React.Component {
 						<inputs.ClickerInput value={this.props.data[dataNames.shooting.autoMissed]} onValueChange={(value) => this.dataUpdated(value, dataNames.shooting.autoMissed)}>
 						</inputs.ClickerInput>
 					</inputs.LabeledInput>
-				</Row>)
-		// END OF AUTONOMOUS
-
-		// START OF TELEOP
-		let teleopRockets = [];
-		let key = 0;
+		</Row>)
 		
+		sandstormRockets.push(<Row key={key++}>
+			<Body>
+			<Input type="Text" value="Text" onValueChange={(value => this.dataUpdated(value, dataNames.gameNotes.autoNotes))}></Input>
+			</Body>
+		</Row>)
+			// END OF AUTONOMOUS
+	
+			// START OF TELEOP
+			let teleopRockets = [];
+			let key = 0;
+			
 			teleopRockets.push(<Row key={key++}>
 				<Row>
 					<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Low Port Scored"} style={dataEntryStyles.gamePieceInput}>

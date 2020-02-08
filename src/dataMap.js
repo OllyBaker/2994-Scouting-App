@@ -50,6 +50,12 @@ export const dataNames = {
 	matchInfo: {
 		matchNumber: "matchNumber",
 		teamNumber: "teamNumber"
+	},
+	gameNotes: {
+		autoNotes: "noteA",
+		teleNotes: "noteT",
+		climbeNotes: "noteC",
+		overallNotes: "noteO"
 	}
 }
 
