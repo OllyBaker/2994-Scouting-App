@@ -18,9 +18,19 @@ export const dataNames = {
 		autoMissed: ['missA'],
 		teleLow: ['lowT'],
 		teleHigh: ['highT'],
-		teleMissed: ['missT']
-		
+		teleMissed: ['missT'],
+		teleBlocked: ["blockedT"]	
 	},
+	controlPanel: {
+		rotationControl: ["rotationCP"],
+		positionControl: ["positionCP"]
+	},
+
+	powerCellPickup: {
+		fromGround: ["groundPCP"],
+		fromLoading: ["loadingPCP"]
+	},
+
 	attributes: {
 		broken: "broken",
 		tip: "tip",
@@ -32,8 +42,10 @@ export const dataNames = {
 		opposingSideTime: "opposide",
 		penaltyPoints: "ppoints",
 		fuelCellsDropped: "hdropped",
-		parkingTime: "parktime",
-		climbingTime: "climbtime"
+		parkingTime: "parktimeGI",
+		climbingTime: "climbtimeGI",
+		rotationTime: "rotationGI",
+		positionTime: "positionGI"
 	},
 	matchInfo: {
 		matchNumber: "matchNumber",
