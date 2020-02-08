@@ -220,7 +220,7 @@ export default class DataEntry extends React.Component {
 		teleopRockets.push(<Row key={key++}>
 			<Row>
 				<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Fuel Cells Scored in High Port"} style={dataEntryStyles.gamePieceInput}>
-					<inputs.ClickerInput value={this.props.data[dataNames.shooting.teleHigh]} onValueChange={(value) => this.dataUpdated(value, dataNames.teleHigh)}>
+					<inputs.ClickerInput value={this.props.data[dataNames.shooting.teleHigh]} onValueChange={(value) => this.dataUpdated(value, dataNames.shooting.teleHigh)}>
 					</inputs.ClickerInput>
 				</inputs.LabeledInput>
 			</Row>
