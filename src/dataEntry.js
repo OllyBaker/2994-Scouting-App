@@ -4,7 +4,7 @@ import styles from './styles'
 import * as inputs from './inputs'
 import MatchList from './listMatches'
 import { addMatchStyles } from './addMatch'
-import { startLevelOptions, dataNames, dataTypes, assistOptions, gamePieceOptions, threeOptions, climbOptions, defaultAssistOption, defaultClimbOption, defaultGamePieceOption, defaultThreeOptions, powerCellPickup, fromGround, fromLoading, controlPanel,startLevel,crossedInitiation, autoMissed, autoBlocked, autoHigh, autoLow, teleNotes, autoNotes,  } from './dataMap'
+import { startLevelOptions, dataNames, dataTypes, assistOptions, gamePieceOptions, threeOptions, climbOptions, defaultAssistOption, defaultClimbOption, defaultGamePieceOption, defaultThreeOptions, powerCellPickup, fromGround, fromLoading, controlPanel,startLevel,crossedInitiation, autoMissed, autoBlocked, autoHigh, autoLow, gameNotes, teleNotes, autoNotes, climbNotes, timeRemainingHung} from './dataMap'
 import { TextInput } from 'react-native';
 const headingPadding = 50;
 
@@ -198,18 +198,24 @@ export default class DataEntry extends React.Component {
 		{/*Autonmous Notes*/}
 		sandstormRockets.push(<Row key={key++}>
 			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Autonomous Notes"} style={dataEntryStyles.gamePieceInput}>
-				<inputs.NoteInput style={dataEntryStyles.gamePieceInput} text="Autonomous Notes" onChangeText={(text) => this.dataUpdated(text, dataNames.gameNotes.autoNotes)}></inputs.NoteInput>
+				<inputs.NoteInput style={dataEntryStyles.gamePieceInput}
+					// value={this.dataNames.gameNotes.autoNotes}
+					// The line above should work, but it pukes
+					value="autoNotes"
+					onChangeText={(value) => this.dataUpdated(value, dataNames.gameNotes.autoNotes)}>
+					
+					</inputs.NoteInput>
 			</inputs.LabeledInput>
 		</Row>)
 		// END OF AUTONOMOUS
-
+ 
 		// START OF TELEOP
 		let teleopRockets = [];
 
 		teleopRockets.push(<Row key={key++}>
 			<Row>
 				<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Low Port Goals"} style={dataEntryStyles.gamePieceInput}>
-					<inputs.ClickerInput value={this.props.data[dataNames.shooting.teleLow]} onValueChange={(value) => this.dataUpdated(value, dataNames.shooting.teleLow)}>
+					<inputs.ClickerInput style={dataEntryStyles.gamePieceInput} value={this.props.data[dataNames.shooting.teleLow]} onValueChange={(value) => this.dataUpdated(value, dataNames.shooting.teleLow)}>
 					</inputs.ClickerInput>
 				</inputs.LabeledInput>
 			</Row>
