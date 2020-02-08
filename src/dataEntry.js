@@ -4,7 +4,7 @@ import styles from './styles'
 import * as inputs from './inputs'
 import MatchList from './listMatches'
 import { addMatchStyles } from './addMatch'
-import { startLevelOptions, dataNames, dataTypes, assistOptions, gamePieceOptions, threeOptions, climbOptions, defaultAssistOption, defaultClimbOption, defaultGamePieceOption, defaultThreeOptions, powerCellPickup, controlPanel,startLevel,crossedInitiation } from './dataMap'
+import { startLevelOptions, dataNames, dataTypes, assistOptions, gamePieceOptions, threeOptions, climbOptions, defaultAssistOption, defaultClimbOption, defaultGamePieceOption, defaultThreeOptions, powerCellPickup, fromGround, fromLoading, controlPanel,startLevel,crossedInitiation, autoMissed, autoBlocked, autoHigh, autoLow, teleNotes, autoNotes,  } from './dataMap'
 import { TextInput } from 'react-native';
 const headingPadding = 50;
 
@@ -149,6 +149,7 @@ export default class DataEntry extends React.Component {
 
 		// START OF AUTONOMOUS
 		let sandstormRockets = [];
+		let key = 0;
 
 		sandstormRockets.push(<Row key={key++}>
 			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Crossed Initiation Line"} style={dataEntryStyles.gamePieceInput}>
@@ -182,7 +183,7 @@ export default class DataEntry extends React.Component {
 		sandstormRockets.push(<Row key={key++}>
 
 			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Shots Missed"} style={dataEntryStyles.gamePieceInput}>
-				<inputs.ClickerInput value={this.props.data[dataNames.shooting.autoMissed]} onValueChange={(value) => this.dataUpdated(value, dataNames.autoMissed)}>
+				<inputs.ClickerInput value={this.props.data[dataNames.shooting.autoMissed]} onValueChange={(value) => this.dataUpdated(value, dataNames.shooting.autoMissed)}>
 				</inputs.ClickerInput>
 			</inputs.LabeledInput>
 		</Row>)
@@ -203,7 +204,6 @@ export default class DataEntry extends React.Component {
 
 		// START OF TELEOP
 		let teleopRockets = [];
-		let key = 0;
 
 		teleopRockets.push(<Row key={key++}>
 			<Row>
@@ -213,8 +213,6 @@ export default class DataEntry extends React.Component {
 				</inputs.LabeledInput>
 			</Row>
 		</Row>)
-
-
 
 		teleopRockets.push(<Row key={key++}>
 			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"High Port Goals"} style={dataEntryStyles.gamePieceInput}>
@@ -377,12 +375,12 @@ export default class DataEntry extends React.Component {
 
 		climbing.push(<Row key={key++}>
 			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Time remaining when hung"} style={dataEntryStyles.gamePieceInput}>
-				<inputs.NoteInput style={dataEntryStyles.gamePieceInput} text="enter amount of time once successfully hung" onChangeText={(text) => this.dataUpdated(text, dataNames.gameNotes.autoNotes)}></inputs.NoteInput>
+				<inputs.NoteInput style={dataEntryStyles.gamePieceInput} text="enter amount of time once successfully hung" onChangeText={(text) => this.dataUpdated(text, dataNames.gameNotes.timeRemainingHung)}></inputs.NoteInput>
 			</inputs.LabeledInput>
 		</Row>)
 		climbing.push(<Row key={key++}>
 			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Endgame Notes"} style={dataEntryStyles.gamePieceInput}>
-				<inputs.NoteInput style={dataEntryStyles.gamePieceInput} text="Other userful information" onChangeText={(text) => this.dataUpdated(text, dataNames.gameNotes.autoNotes)}></inputs.NoteInput>
+				<inputs.NoteInput style={dataEntryStyles.gamePieceInput} text="Other userful information" onChangeText={(text) => this.dataUpdated(text, dataNames.gameNotes.climbNotes)}></inputs.NoteInput>
 			</inputs.LabeledInput>
 		</Row>)
 

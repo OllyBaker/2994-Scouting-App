@@ -55,10 +55,11 @@ export const dataNames = {
 		teamNumber: "teamNumber"
 	},
 	gameNotes: {
-		autoNotes: "noteA",
-		teleNotes: "noteT",
-		climbeNotes: "noteC",
-		overallNotes: "noteO"
+		autoNotes: "notes-autonomous",
+		teleNotes: "notes-teleop",
+		climbNotes: "notes-endgame",
+		overallNotes: "noteO",
+		timeRemainingHung: "note-time-remaining"
 	}
 }
 
