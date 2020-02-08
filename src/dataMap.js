@@ -7,6 +7,8 @@ export const dataNames = {
 	rocketHatch: ["rock1h", "rock2h", "rock3h"],
 	shipCargo: ['shipc'],
 	shipHatch: ['shiph'],
+	teamColour: ['Blue', 'Red'],
+	colourChoice: ['colChoice'],
 	climbing: {
 		ableToClimb: "abletoclibm",
 		hangingMobility: "hangingMobility",

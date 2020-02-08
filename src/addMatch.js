@@ -2,6 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import styles from './styles'
 import * as inputs from './inputs.js'
+import { startLevelOptions, dataNames, dataTypes, assistOptions, gamePieceOptions, threeOptions, climbOptions, defaultAssistOption, defaultClimbOption, defaultGamePieceOption, defaultThreeOptions, powerCellPickup, controlPanel, startLevel, crossedInitiation } from './dataMap'
+
 
 export const addMatchStyles = {
 	mainPopup: {
@@ -61,11 +63,48 @@ export const addMatchStyles = {
 		marginVertical: "10%"
 	}
 }
+const Spacer = (props) => (<View style={{ flex: 0.1 }}></View>);
+
+const dataEntryStyles = {
+	header: {
+		//...styles.align.center,
+		//textAlign: "center",
+		...styles.font.header,
+		flex: 1
+	},
+	gamePieceInput: {
+		flex: 1
+	},
+	navigationButton: {
+		fontSize: 16,
+		...styles.font.standardText,
+		height: "100%",
+		flexDirection: "row",
+		zIndex: 100000,
+		flex: 1
+	},
+	buttonText: {
+		...styles.font.standardText,
+		width: "100%",
+		textAlign: "left",
+		color: styles.colors.highlight.bg
+	},
+	controlBarButton: {
+		flex: 1,
+		justifyContent: "center",
+		alignItems: "center",
+		backgroundColor: styles.colors.dangerous.bg,
+		width: "100%",
+		margin: 5
+	}
+}
 
 export default class AddMatchPopup extends React.Component {
 	state = {
 		teamNumber: 0,
-		matchNumber: 0
+		matchNumber: 0,
+		teamColour: 0,
+		scoutName: "name"
 	}
 	render() {
 		let disabled = !(this.state.teamNumber && this.state.matchNumber);
@@ -86,6 +125,20 @@ export default class AddMatchPopup extends React.Component {
 					{/* Team number */}
 					<inputs.LabeledInput textStyle={styles.font.inputHeader} style={addMatchStyles.numberInput} label="Enter a team number">
 						<inputs.NumberInput allowEmpty onValueChange={(newTeamNumber)=>this.setState({teamNumber: newTeamNumber})}></inputs.NumberInput>
+					</inputs.LabeledInput>
+					<Spacer></Spacer>
+					{/* <inputs.LabeledInput textStyle={styles.font.inputHeader} style={addMatchStyles.numberInput} label="Team colour">
+						<inputs.PickerInput value={this.props.data[dataNames.colourChoice]} options={teamColour}
+							onValueChange={(selected) => this.dataUpdated(selected, dataNames.colourChoice)}
+							style={{
+								backgroundColor:
+									this.props.data[dataNames.colourChoice] == climbOptions[teamColour] ?
+										styles.colors.tertiary.bg : styles.colors.secondary.bg
+							}}></inputs.PickerInput>
+					</inputs.LabeledInput> */}
+					
+					<inputs.LabeledInput textStyle={styles.font.inputHeader} style={addMatchStyles.numberInput} label="Scout's Name">
+						<inputs.NoteInput style={dataEntryStyles.gamePieceInput} text="Name" onChangeText={(text) => this.dataUpdated(text, dataNames.gameNotes.autoNotes)}></inputs.NoteInput>
 					</inputs.LabeledInput>
 				</View>
 				{/* Submit and cancel buttons */}

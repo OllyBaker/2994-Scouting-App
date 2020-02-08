@@ -194,6 +194,7 @@ export default class DataEntry extends React.Component {
 			</inputs.LabeledInput>
 		</Row>)
 
+		{/*Autonmous Notes*/}
 		sandstormRockets.push(<Row key={key++}>
 			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Autonomous Notes"} style={dataEntryStyles.gamePieceInput}>
 				<inputs.NoteInput style={dataEntryStyles.gamePieceInput} text="Autonomous Notes" onChangeText={(text) => this.dataUpdated(text, dataNames.gameNotes.autoNotes)}></inputs.NoteInput>
