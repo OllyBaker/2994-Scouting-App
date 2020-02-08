@@ -162,14 +162,6 @@ export default class DataEntry extends React.Component {
 			</Row>)
 		sandstormRockets.push(<Row key={key++}>
 
-
-			<Row>
-				<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"# of Balls shot into Low Goal"} style={dataEntryStyles.gamePieceInput}>
-					<inputs.ClickerInput value={this.props.data[dataNames.shooting.teleLow]} onValueChange={(value) => this.dataUpdated(value, dataNames.gameInfo.hatchesDropped)}>
-					</inputs.ClickerInput>
-				</inputs.LabeledInput>
-			</Row>
-
 					<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"# of Balls shot into High Goal"} style={dataEntryStyles.gamePieceInput}>
 						<inputs.ClickerInput value={this.props.data[dataNames.shooting.autoHigh]} onValueChange={(value) => this.dataUpdated(value, dataNames.shooting.autoHigh)}>
 						</inputs.ClickerInput>
@@ -180,7 +172,7 @@ export default class DataEntry extends React.Component {
 
 			<Row>
 				<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"# of Balls shot into High Goal"} style={dataEntryStyles.gamePieceInput}>
-					<inputs.ClickerInput value={this.props.data[dataNames.shooting.teleHigh]} onValueChange={(value) => this.dataUpdated(value, dataNames.teleHigh)}>
+					<inputs.ClickerInput value={this.props.data[dataNames.shooting.autoHigh]} onValueChange={(value) => this.dataUpdated(value, dataNames.autoHigh)}>
 					</inputs.ClickerInput>
 				</inputs.LabeledInput>
 			</Row>
@@ -442,7 +434,7 @@ export default class DataEntry extends React.Component {
 
 				<Row>
 					<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Number of fuel cells dropped"} style={dataEntryStyles.gamePieceInput}>
-						<inputs.ClickerInput value={this.props.data[dataNames.gameInfo.fuelCellsDropped]} onValueChange={(value) => this.dataUpdated(value, dataNames.gameInfo.hatchesDropped)}>
+						<inputs.ClickerInput value={this.props.data[dataNames.gameInfo.fuelCellsDropped]} onValueChange={(value) => this.dataUpdated(value, dataNames.gameInfo.fuelCellsDropped)}>
 						</inputs.ClickerInput>
 					</inputs.LabeledInput>
 				</Row>
