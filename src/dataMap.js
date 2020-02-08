@@ -1,5 +1,6 @@
 export const dataNames = {
 	startLevel: ["startlvl"],
+	crossedInitiation: ["crossedinitiation"],
 	cargo: ["cargo1", "cargo2", "cargo3", "cargo4"],
 	hatch: ["hatch1", "hatch2", "hatch3", "hatch4"],
 	rocketCargo: ["rock1c", "rock2c", "rock3c"],
@@ -16,6 +17,7 @@ export const dataNames = {
 		autoLow: ['lowA'],
 		autoHigh: ['highA'],
 		autoMissed: ['missA'],
+		autoBlocked: ["blockedA"],
 		teleLow: ['lowT'],
 		teleHigh: ['highT'],
 		teleMissed: ['missT'],
