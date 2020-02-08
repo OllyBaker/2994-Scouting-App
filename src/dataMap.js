@@ -7,7 +7,8 @@ export const dataNames = {
 	shipCargo: ['shipc'],
 	shipHatch: ['shiph'],
 	climbing: {
-		levelReached: "climblvlReached",
+		ableToClimb: "abletoclibm",
+		hangingMobility: "hangingMobility",
 		assist: "assist",
 		balanced: "balance"
 	},
@@ -30,13 +31,23 @@ export const dataNames = {
 	gameInfo: {
 		opposingSideTime: "opposide",
 		penaltyPoints: "ppoints",
-		fuelCellsDropped: "hdropped"
+		fuelCellsDropped: "hdropped",
+		parkingTime: "parktime",
+		climbingTime: "climbtime"
 	},
 	matchInfo: {
 		matchNumber: "matchNumber",
 		teamNumber: "teamNumber"
 	}
 }
+
+export const threeOptions = [
+	"Not Observed",
+	"Yes",
+	"No"
+]
+
+export const defaultThreeOptions = 0;
 
 export const climbOptions = [
 	"No climb",
