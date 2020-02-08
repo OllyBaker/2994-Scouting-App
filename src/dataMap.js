@@ -11,6 +11,15 @@ export const dataNames = {
 		assist: "assist",
 		balanced: "balance"
 	},
+	shooting: {
+		autoLow: ['lowA'],
+		autoHigh: ['highA'],
+		autoMissed: ['missA'],
+		teleLow: ['lowT'],
+		teleHigh: ['highT'],
+		teleMissed: ['missT']
+		
+	},
 	attributes: {
 		broken: "broken",
 		tip: "tip",
@@ -21,7 +30,7 @@ export const dataNames = {
 	gameInfo: {
 		opposingSideTime: "opposide",
 		penaltyPoints: "ppoints",
-		hatchesDropped: "hdropped"
+		fuelCellsDropped: "hdropped"
 	},
 	matchInfo: {
 		matchNumber: "matchNumber",
