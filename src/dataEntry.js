@@ -5,7 +5,7 @@ import * as inputs from './inputs'
 import MatchList from './listMatches'
 import { addMatchStyles } from './addMatch'
 import { startLevelOptions, dataNames, dataTypes, assistOptions, gamePieceOptions, threeOptions, climbOptions, defaultAssistOption, defaultClimbOption, defaultGamePieceOption, defaultThreeOptions, powerCellPickup, controlPanel } from './dataMap'
-
+import { TextInput } from 'react-native';
 const headingPadding = 50;
 
 const dataEntryStyles = {
@@ -41,7 +41,6 @@ const dataEntryStyles = {
 		margin: 5
 	}
 }
-
 const Row = (props) =>
 	(<View style={[{
 		width: "100%",
@@ -76,7 +75,6 @@ export default class DataEntry extends React.Component {
 				value={this.props.data[props.variable]}></inputs.TimerInput>
 		</inputs.LabeledInput>
 	</Row>
-
 	constructor(props) {
 		super(props);
 		let newData = {
@@ -183,10 +181,8 @@ export default class DataEntry extends React.Component {
 					</inputs.LabeledInput>
 		</Row>)
 		
-		sandstormRockets.push(<Row key={key++}>
-			<Body>
-			<Input type="Text" value="Text" onValueChange={(value => this.dataUpdated(value, dataNames.gameNotes.autoNotes))}></Input>
-			</Body>
+		sandstormRockets.push(<Row key={key++}> 
+			<inputs.NoteInput style={dataEntryStyles.gamePieceInput} text="Autonomous Notes" onChangeText={(text) => this.dataUpdated(text, dataNames.gameNotes.autoNotes)}></inputs.NoteInput>			
 		</Row>)
 			// END OF AUTONOMOUS
 	

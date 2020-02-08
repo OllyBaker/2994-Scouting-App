@@ -241,3 +241,16 @@ export class LabeledInput extends React.Component {
 		</View>
 	}
 }
+export class NoteInput extends React.Component {
+	onChanged(text) {
+		if (this.props.onChangeText) this.props.onChangeText(text)
+	}
+	render() {
+		return( 
+			<TextInput
+				style={[this.props.style, styles.inputs.inputBox]}
+				onChangeText={(text) => this.onChanged(text)}
+				text={this.props.text}
+			/>)
+	}
+}
