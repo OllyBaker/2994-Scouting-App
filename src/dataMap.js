@@ -1,9 +1,9 @@
 export const dataNames = {
 	startLevel: ["startlvl"],
 	crossedInitiation: ["crossedinitiation"],
-	cargo: ["cargo1", "cargo2", "cargo3", "cargo4"],
+	cargo: ["cargo1", "cargo2", "cargo3", "cargo4", "cargo5"],
 	hatch: ["hatch1", "hatch2", "hatch3", "hatch4"],
-	rocketCargo: ["rock1c", "rock2c", "rock3c"],
+	rocketCargo: ["1PC", "2PC", "3PC", "4PC", "5PC"],
 	rocketHatch: ["rock1h", "rock2h", "rock3h"],
 	shipCargo: ['shipc'],
 	shipHatch: ['shiph'],
@@ -38,7 +38,8 @@ export const dataNames = {
 		tip: "tip",
 		cargoFromDepot: "depot",
 		hatchesFromFloor: "floor",
-		moveTrench:"trench"
+		moveTrench: "trench",
+		powerCellCapacity: "pc-capacity"
 	},
 	gameInfo: {
 		opposingSideTime: "opposide",
