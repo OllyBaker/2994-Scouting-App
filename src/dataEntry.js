@@ -183,11 +183,6 @@ export default class DataEntry extends React.Component {
 					</inputs.LabeledInput>
 		</Row>)
 		
-		sandstormRockets.push(<Row key={key++}>
-			<Body>
-			<Input type="Text" value="Text" onValueChange={(value => this.dataUpdated(value, dataNames.gameNotes.autoNotes))}></Input>
-			</Body>
-		</Row>)
 			// END OF AUTONOMOUS
 	
 			// START OF TELEOP
