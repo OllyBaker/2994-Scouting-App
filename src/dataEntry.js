@@ -80,22 +80,7 @@ export default class DataEntry extends React.Component {
 		let newData = {
 			...this.props.data
 		}
-		if (!newData[dataNames.startLevel[0]]) newData[dataNames.startLevel[0]] = startLevelOptions[0];
 
-		for (let i = 0; i < dataNames.cargo.length; i++) {
-			if (!newData[dataNames.cargo[i]]) newData[dataNames.cargo[i]] = gamePieceOptions[defaultGamePieceOption];
-			if (!newData[dataNames.hatch[i]]) newData[dataNames.hatch[i]] = gamePieceOptions[defaultGamePieceOption];
-		}
-
-		for (let i in dataNames.rocketHatch) {
-			if (!newData[dataNames.rocketHatch[i]]) newData[dataNames.rocketHatch[i]] = 0;
-			if (!newData[dataNames.rocketCargo[i]]) newData[dataNames.rocketCargo[i]] = 0;
-		}
-		if (!newData[dataNames.shipCargo[0]]) newData[dataNames.shipCargo[0]] = 0;
-		if (!newData[dataNames.shipHatch[0]]) newData[dataNames.shipHatch[0]] = 0;
-
-		if (!newData[dataNames.climbing.levelReached]) newData[dataNames.climbing.levelReached] = climbOptions[defaultClimbOption];
-		if (!newData[dataNames.climbing.assist]) newData[dataNames.climbing.assist] = assistOptions[defaultThreeOptions];
 
 		for (let attribute in dataNames.attributes) {
 			if (!newData[dataNames.attributes[attribute]]) newData[dataNames.attributes[attribute]] = false;
@@ -201,8 +186,8 @@ export default class DataEntry extends React.Component {
 				<inputs.NoteInput style={dataEntryStyles.gamePieceInput}
 					// value={this.dataNames.gameNotes.autoNotes}
 					// The line above should work, but it pukes
-					value="autoNotes"
-					onChangeText={(value) => this.dataUpdated(value, dataNames.gameNotes.autoNotes)}>
+					value={this.props.data[dataNames.gameNotes.autoNotes]}
+					onValueChange = {(value) => this.dataUpdated(value, dataNames.gameNotes.autoNotes)}>
 					
 					</inputs.NoteInput>
 			</inputs.LabeledInput>
@@ -266,7 +251,7 @@ export default class DataEntry extends React.Component {
 					onValueChange={(selected) => this.dataUpdated(selected, dataNames.controlPanel.positionControl)}
 					style={{
 						backgroundColor:
-							this.props.data[dataNames.climbing.assist] == climbOptions[defaultThreeOptions] ?
+							this.props.data[dataNames.controlPanel.positionControl] == threeOptions[2] ?
 								styles.colors.tertiary.bg : styles.colors.secondary.bg
 					}}
 				></inputs.PickerInput>
