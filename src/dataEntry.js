@@ -173,23 +173,6 @@ export default class DataEntry extends React.Component {
 			</inputs.LabeledInput>
 		</Row>)
 		
-			// END OF AUTONOMOUS
-	
-			// START OF TELEOP
-			let teleopRockets = [];
-			let key = 0;
-			
-			teleopRockets.push(<Row key={key++}>
-				<Row>
-					<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Low Port Scored"} style={dataEntryStyles.gamePieceInput}>
-						<inputs.ClickerInput value={this.props.data[dataNames.shooting.teleLow]} onValueChange={(value) => this.dataUpdated(value, dataNames.shooting.teleLow)}>
-						</inputs.ClickerInput>
-					</inputs.LabeledInput>
-				</Row>
-			</Row>)
-		
-		
-
 		{/*Autonmous Notes*/}
 		sandstormRockets.push(<Row key={key++}>
 			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Autonomous Notes"} style={dataEntryStyles.gamePieceInput}>

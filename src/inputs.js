@@ -242,33 +242,15 @@ export class LabeledInput extends React.Component {
 	}
 }
 export class NoteInput extends React.Component {
-	state = {
-		value: "",
-		rawText: "",
-		editing: true
-	}
-	// constructor(props) {
-	// 	super(props);
-	// 	this.state.rawText = this.getDisplayValue();
-	// }
-	// getDisplayValue() {
-	// 	let output;
-	// 	if (this.props.allowEmpty && this.state.text == " ") return "";
-	// 	if (this.state.rawText != null && this.state.editing) return this.state.rawText;
-	// 	output = this.state.value
-	// 	if (output == "" || output == "NaN") return "";
-	// 	else return output;
-	// }
-	onChanged(value) {
-		if (this.props.onValueChange) this.props.value(value)
+	onChanged(text) {
+		if (this.props.onChangeText) this.props.onChangeText(text)
 	}
 	render() {
 		return( 
 			<TextInput
 				style={[this.props.style, styles.inputs.inputBox]}
-				value={this.props.value}
-				onValueChange={(value) => this.onChanged(value)}
-		
+				onChangeText={(text) => this.onChanged(text)}
+				text={this.props.text}
 			/>)
 	}
 }

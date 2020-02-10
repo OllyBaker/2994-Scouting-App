@@ -1,4 +1,3 @@
-// Big Thank you to Team 6135 Arctos for graciously lending us their code for the base of our scouting app
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import MainScreen from './src/mainScreen'
