@@ -29,23 +29,25 @@ export const dataNames = {
 	}
 }
 
-export const climbOptions = [
-	"No climb",
-	"Level 1",
-	"Level 2",
-	"Level 3"
+export const startLevelOptions = [
+	"S",
+	"n"
 ]
-export const defaultClimbOption = 0;
 
-export const assistOptions = [
-	"No assist",
-	"Level 2",
-	"Level 3"
+export const climbOptions = [ 
+	"Climbed",
+	"Not Climbed",
+	"Climbed with Assistance"
 ]
 
 export const initiationLineOptions = [
 	"Didn't cross",
 	"Crossed"
+]
+
+export const rotationControl = [
+	"Rotates Control Panel",
+	"Does not rotate"
 ]
 export const defaultAssistOption = 0;
 
