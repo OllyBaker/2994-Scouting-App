@@ -1,8 +1,8 @@
 {
+  "urlRandomness": "ki-znu",
   "hostType": "tunnel",
   "lanType": "ip",
   "dev": true,
   "minify": false,
-  "urlRandomness": "ky-r78",
   "https": false
 }

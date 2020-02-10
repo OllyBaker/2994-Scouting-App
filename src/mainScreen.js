@@ -56,10 +56,10 @@ export default class MainScreen extends React.Component {
 	modalCanceled() {
 		this.setState({ currentWindow: pages.homeScreen });
 	}
-	createMatch(teamNumber, matchNumber) {
+	createMatch(teamNumber, matchNumber, teamColour, scoutName) {
 		this.setState({ currentWindow: pages.dataInput });
 		let newMatches = this.state.matches;
-		newMatches.push({ teamNumber, matchNumber });
+		newMatches.push({ teamNumber, matchNumber, teamColour, scoutName });
 		this.setState({ matches: newMatches, dataEntryIndex: newMatches.length - 1 });
 	}
 	dataChange(match) {
@@ -139,7 +139,7 @@ export default class MainScreen extends React.Component {
 						height: "75%",
 						zIndex: 100,
 						...styles.align.center
-					}}><AddMatchPopup onCancel={() => this.modalCanceled()} onSubmit={(team, match) => this.createMatch(team, match)}></AddMatchPopup></View>
+					}}><AddMatchPopup onCancel={() => this.modalCanceled()} onSubmit={(team, match, colour, name) => this.createMatch(team, match, colour, name)}></AddMatchPopup></View>
 					: null}
 
 				<View style={{ flex: 0.75 }}></View>
