@@ -108,7 +108,7 @@ function decodeBuffer(str) {
 	let idx = 0;
 	for (let map in dataMap.bitmap) {
 		for (let j in dataMap.dataNames[map]) {
-			let bits = "";
+			let bits = " ";
 			for (let i = 0; i < dataMap.bitmap[map].bits; i++) {
 				bits += buffer[idx].toString();
 				idx++;
