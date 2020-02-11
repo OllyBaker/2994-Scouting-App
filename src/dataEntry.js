@@ -194,8 +194,8 @@ export default class DataEntry extends React.Component {
 				<inputs.NoteInput style={dataEntryStyles.gamePieceInput}
 					// value={this.dataNames.gameNotes.autoNotes}
 					// The line above should work, but it pukes
-					value="autoNotes"
-					onChangeText={(value) => this.dataUpdated(value, dataNames.gameNotes.autoNotes)}>
+					value={this.props.data[dataNames.gameNotes.autoNotes]}
+					onValueChange={(value) => this.dataUpdated(value, dataNames.gameNotes.autoNotes)}>
 					
 					</inputs.NoteInput>
 			</inputs.LabeledInput>
