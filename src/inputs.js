@@ -242,8 +242,6 @@ export class LabeledInput extends React.Component {
 	}
 }
 export class NoteInput extends React.Component {
-	onChanged(text) {
-		if (this.props.onChangeText) this.props.onChangeText(text)
 		state = {
 			value: "",
 			rawText: "",
@@ -268,11 +266,9 @@ export class NoteInput extends React.Component {
 			return (
 				<TextInput
 					style={[this.props.style, styles.inputs.inputBox]}
-					onChangeText={(text) => this.onChanged(text)}
-					text={this.props.text}
 					value={this.props.value}
 					onValueChange={(value) => this.onChanged(value)}
 
-				/>)
+				/>);
 		}
 	}
