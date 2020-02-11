@@ -171,7 +171,7 @@ export default class DataEntry extends React.Component {
 				</inputs.ClickerInput>
 			</inputs.LabeledInput>
 		</Row>)
-
+ 
 		sandstormRockets.push(<Row key={key++}>
 
 			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"High Port Goals"} style={dataEntryStyles.gamePieceInput}>
