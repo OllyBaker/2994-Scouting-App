@@ -105,6 +105,17 @@ export default class DataEntry extends React.Component {
 			if (!newData[dataNames.gameInfo[gameInfo]]) newData[dataNames.gameInfo[gameInfo]] = 0;
 		}
 
+		if (!newData[dataNames.crossedInitiation]) {
+			newData[dataNames.crossedInitiation] = threeOptions[defaultThreeOptions];
+		}
+
+		if (!newData[dataNames.controlPanel.rotationControl]) {
+			newData[dataNames.controlPanel.rotationControl] = threeOptions[defaultThreeOptions];
+		}
+		if (!newData[dataNames.controlPanel.rotationControl]) {
+			newData[dataNames.controlPanel.postitionControl] = threeOptions[defaultThreeOptions];
+		}
+
 		this.props.onDataChange(newData);
 		this.originalValue = this.props.data;
 	}
