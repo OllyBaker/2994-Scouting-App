@@ -260,7 +260,7 @@ export class NoteInput extends React.Component {
 		// 	else return output;
 		// }
 		onChanged(value) {
-			if (this.props.onValueChange) this.props.value(value)
+			if (this.props.onValueChange) this.props.onValueChange(value)
 		}
 		render() {
 			return (
