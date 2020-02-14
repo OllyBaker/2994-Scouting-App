@@ -263,7 +263,7 @@ export default class DataEntry extends React.Component {
 
 		teleopRockets.push(<Row key={key++}>
 			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Time Engaged for CP Position"} style={dataEntryStyles.gamePieceInput}>
-				<inputs.TimeInput value={this.props.data[dataNames.gameInfo.positionTime]} onValueChange={(value) => this.dataUpdated(value, dataNames.gameInfo.positionTime)}>
+				<inputs.TimeInput value={this.props.data[dataNames.timingInfo.positionTime]} onValueChange={(value) => this.dataUpdated(value, dataNames.timingInfo.positionTime)}>
 				</inputs.TimeInput>
 			</inputs.LabeledInput>
 		</Row>)
@@ -305,7 +305,7 @@ export default class DataEntry extends React.Component {
 
 		climbing.push(<Row key={key++}>
 			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Time to Park"} style={dataEntryStyles.gamePieceInput}>
-				<inputs.TimeInput value={this.props.data[dataNames.gameInfo.parkingTime]} onValueChange={(value) => this.dataUpdated(value, dataNames.gameInfo.parkingTime)}>
+				<inputs.TimeInput value={this.props.data[dataNames.timingInfo.parkingTime]} onValueChange={(value) => this.dataUpdated(value, dataNames.timingInfo.parkingTime)}>
 				</inputs.TimeInput>
 			</inputs.LabeledInput>
 		</Row>)
@@ -363,7 +363,7 @@ export default class DataEntry extends React.Component {
 
 		climbing.push(<Row key={key++}>
 			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Time to Climb"} style={dataEntryStyles.gamePieceInput}>
-				<inputs.TimeInput value={this.props.data[dataNames.gameInfo.climbingTime]} onValueChange={(value) => this.dataUpdated(value, dataNames.gameInfo.climbingTime)}>
+				<inputs.TimeInput value={this.props.data[dataNames.timingInfo.climbingTime]} onValueChange={(value) => this.dataUpdated(value, dataNames.timingInfo.climbingTime)}>
 				</inputs.TimeInput>
 			</inputs.LabeledInput>
 		</Row>)

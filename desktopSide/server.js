@@ -44,6 +44,7 @@ function jsonToCSV(json) {
 		output += cargos.slice(1).join(',');
 
 		// Tele-op
+		output += ',' + json[i][datamap.dataNames.crossedInitiation[j]];	
 		output += ',' + json[i][datamap.dataNames.shipHatch[0]];
 		for (let j in datamap.dataNames.rocketHatch) {
 			output += ',' + json[i][datamap.dataNames.rocketHatch[j]];
