@@ -190,7 +190,7 @@ export default class DataEntry extends React.Component {
 					// value={this.dataNames.gameNotes.autoNotes}
 					// The line above should work, but it pukes
 					value={this.props.data[dataNames.gameNotes.autoNotes]}
-					onValueChange={(value) => this.onChanged(value)}>
+					onValueChange={(value) => this.onChanged(value, dataNames.gameNotes.autoNotes)}>
 					{/* this.dataUpdated(value, dataNames.gameNotes.autoNotes) */}
 					</inputs.NoteInput>
 			</inputs.LabeledInput>
