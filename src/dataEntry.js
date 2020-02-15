@@ -57,7 +57,7 @@ export default class DataEntry extends React.Component {
 		dead: false
 	}
 	Toggle = (props) => <Row style={{ marginBottom: 10 }}>
-		<inputs.LabeledInput textStyle={styles.font.dataEntry} label={props.label} style={dataEntryStyles.gamePieceInput}>
+		<inputs.LabeledInput textStyle={styles.font.inputHeader} style={addMatchStyles.numberInput} label="Enter a match number">
 			<inputs.ToggleInput
 				onValueChange={(selected) =>
 					this.dataUpdated(selected, props.variable)}
@@ -186,13 +186,21 @@ export default class DataEntry extends React.Component {
 		{/*Autonmous Notes*/}
 		sandstormRockets.push(<Row key={key++}>
 			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Autonomous Notes"} style={dataEntryStyles.gamePieceInput}>
-				<inputs.NoteInput style={dataEntryStyles.gamePieceInput}
+				<inputs.NoteInput style={dataEntryStyles.gamePieceInput} allowEmpty onValueChange={(newAutoNotes) => this.setState({ autoNotes: newAutoNotes })}
 					// value={this.dataNames.gameNotes.autoNotes}
 					// The line above should work, but it pukes
-					value={this.props.data[dataNames.gameNotes.autoNotes]}
-					onValueChange={(value) => this.onChanged(value)}>
+					// value={this.props.data[dataNames.gameNotes.autoNotes]}
+>
+
+					
+					
 					{/* this.dataUpdated(value, dataNames.gameNotes.autoNotes) */}
 					</inputs.NoteInput>
+			</inputs.LabeledInput>
+		</Row>)
+		sandstormRockets.push(<Row key={key++}>
+			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Autonomous Notes"} style={dataEntryStyles.gamePieceInput}>
+				<inputs.NumberInput onValueChange={(newMatchNumber) => this.setState({ matchNumber: newMatchNumber })}></inputs.NumberInput>
 			</inputs.LabeledInput>
 		</Row>)
 		// END OF AUTONOMOUS
