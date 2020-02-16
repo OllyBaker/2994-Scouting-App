@@ -6,6 +6,7 @@ import * as dataMap from './dataMap'
 import { Buffer } from 'buffer';
 
 function generateBuffer(data) {
+    console.log("Right Data!!" +data + "End");
     let length = 0;
     for (let i in dataMap.bitmap) {
         length += dataMap.bitmap[i].bits * dataMap.bitmap[i].amount;
@@ -24,7 +25,6 @@ function generateBuffer(data) {
             else {
                 let propName = dataMap.dataNames[prop][name];
                 let userValue = data[propName];
-                let boolValue = false;
                 if (userValue == "Yes") {
                     userValue = true;
                 } 
@@ -65,7 +65,6 @@ function generateQRCode(allData) {
     for (let i in data) {
         output += generateBuffer(data[i]);
     }
-    console.log(data.length);
     return output;
 }
 function getBitLength() {
@@ -112,7 +111,7 @@ function decodeBuffer(str) {
         buffer.push(...temp);
     }
 
-    console.log(buffer.join("sss"));
+    console.log(buffer.join(""));
 
     let values = {};
     let idx = 0;
@@ -142,24 +141,19 @@ function decodeBuffer(str) {
 const qrCodeBytes = 100;
 export default class QRCodeGenerator extends React.Component {
     render() {
+        
         let codes = [];
-        let matches = generateQRCode(this.props.data);
-
-        console.log(decodeQRCode(matches));
+        let matches = this.props.data;
+        console.log(JSON.stringify(this.props.data));
 
         let rawCodes = [];
         let idx = 0;
-        for (let i = 0; i < matches.length; i += (qrCodeBytes / 2 - 1)) {
-            rawCodes[idx] = "";
-            if (idx == 0) rawCodes[idx] += String.fromCharCode(Math.ceil((matches.length / qrCodeBytes) * 2) << 8);
-            else rawCodes[idx] += String.fromCharCode(idx);
-            console.log(rawCodes[idx].charCodeAt(0));
-            rawCodes[idx] += matches.slice(i, i + (qrCodeBytes / 2 - 1));
-            console.log(rawCodes[idx], Buffer(rawCodes[idx], 'utf16le').toString('base64'));
+        for (match in this.props.data) {
             codes.push(
                 <QRCode
                     size={Dimensions.get("window").width - 100}
-                    value={Buffer(rawCodes[idx], 'utf16le').toString('base64')}
+                    
+                    value={JSON.stringify(this.props.data[match])}
                 />
             )
             idx++;

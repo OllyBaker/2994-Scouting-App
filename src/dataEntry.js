@@ -359,11 +359,11 @@ export default class DataEntry extends React.Component {
 			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Able to Climb"} style={dataEntryStyles.gamePieceInput}>
 				<inputs.PickerInput value={this.props.data[dataNames.climbing.ableToClimb]} options={threeOptions}
 					onValueChange={(selected) => this.dataUpdated(selected, dataNames.climbing.ableToClimb)}
-					style={{
-						backgroundColor:
-							this.props.data[dataNames.climbing.ableToClimb] == climbOptions[defaultClimbOption] ?
-								styles.colors.tertiary.bg : styles.colors.secondary.bg
-					}}
+					// style={{
+					// 	backgroundColor:
+					// 		this.props.data[dataNames.climbing.ableToClimb] == climbOptions[defaultClimbOption] ?
+					// 			styles.colors.tertiary.bg : styles.colors.secondary.bg
+					// }}
 				></inputs.PickerInput>
 			</inputs.LabeledInput>
 		</Row>)

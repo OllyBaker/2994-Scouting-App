@@ -3,7 +3,7 @@ export const dataNames = {
 	teamColour: ['Blue', 'Red'],
 	colourChoice: ['colChoice'],
 	climbing: {
-		ableToClimb: "abletoclibm",
+		ableToClimb: "abletoclimb",
 		hangingMobility: "hangingMobility",
 		assist: "assist",
 		balanced: "balance"
@@ -85,7 +85,7 @@ function swap(json) {
 }
 export const dataTypes = {
 	"crossedInitiation": [0, 1],
-	"climbing": { ...swap(climbOptions), "No assist": 0 },
+	"climbing": [0,1],
 	"attributes": [0, 1],
 	"gameInfo": "number",
 	"matchInfo": "number"
