@@ -9,8 +9,7 @@ const qrCodeBytes = 100;
 export default class QRCodeGenerator extends React.Component {
 	render() {
 		let codes = [];
-		let matches = generateQRCode(this.props.data);
-
+		
         for (match in this.props.data) {
             codes.push(
                 <QRCode
