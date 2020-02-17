@@ -1,16 +1,9 @@
 export const dataNames = {
-	startLevel: ["startlvl"],
 	crossedInitiation: ["crossedinitiation"],
-	cargo: ["cargo1", "cargo2", "cargo3", "cargo4", "cargo5"],
-	hatch: ["hatch1", "hatch2", "hatch3", "hatch4"],
-	rocketCargo: ["1PC", "2PC", "3PC", "4PC", "5PC"],
-	rocketHatch: ["rock1h", "rock2h", "rock3h"],
-	shipCargo: ['shipc'],
-	shipHatch: ['shiph'],
 	teamColour: ['Blue', 'Red'],
 	colourChoice: ['colChoice'],
 	climbing: {
-		ableToClimb: "abletoclibm",
+		ableToClimb: "abletoclimb",
 		hangingMobility: "hangingMobility",
 		assist: "assist",
 		balanced: "balance"
@@ -23,7 +16,7 @@ export const dataNames = {
 		teleLow: ['lowT'],
 		teleHigh: ['highT'],
 		teleMissed: ['missT'],
-		teleBlocked: ["blockedT"]	
+		teleBlocked: ["blockedT"]
 	},
 	controlPanel: {
 		rotationControl: ["rotationCP"],
@@ -46,7 +39,9 @@ export const dataNames = {
 	gameInfo: {
 		opposingSideTime: "opposide",
 		penaltyPoints: "ppoints",
-		fuelCellsDropped: "hdropped",
+		fuelCellsDropped: "hdropped"
+	},
+	timingInfo: {
 		parkingTime: "parktimeGI",
 		climbingTime: "climbtimeGI",
 		rotationTime: "rotationGI",
@@ -81,28 +76,6 @@ export const climbOptions = [
 ]
 export const defaultClimbOption = 0;
 
-export const assistOptions = [
-	"No assist",
-	"Level 2",
-	"Level 3"
-]
-
-export const startLevelOptions = [
-	"Didn't cross baseline",
-	"Level 1",
-	"Level 2"
-]
-export const defaultAssistOption = 0;
-
-export const gamePieceOptions = [
-	"None",
-	"Rocket level 1",
-	"Rocket level 2",
-	"Rocket level 3",
-	"Cargo Ship"
-]
-export const defaultGamePieceOption = 0;
-
 function swap(json) {
 	let ret = {};
 	for (let key in json) {
@@ -111,55 +84,24 @@ function swap(json) {
 	return ret;
 }
 export const dataTypes = {
-	"startLevel": swap(startLevelOptions),
-	"cargo": swap(gamePieceOptions),
-	"hatch": swap(gamePieceOptions),
-	"rocketCargo": [0, 1, 2, 3, 4],
-	"rocketHatch": [0, 1, 2, 3, 4],
-	"shipCargo": [0, 1, 2, 3, 4, 5, 6, 7, 8],
-	"shipHatch": [0, 1, 2, 3, 4, 5, 6, 7, 8],
-	"climbing": { ...swap(climbOptions), "No assist": 0 },
+	"crossedInitiation": [0, 1],
+	"climbing": [0,1],
 	"attributes": [0, 1],
 	"gameInfo": "number",
 	"matchInfo": "number"
 }
-
 export const bitmap = {
-	"startLevel": {
-		bits: 2,
-		amount: 1
-	},
-	"cargo": {
-		bits: 3,
-		amount: 4
-	},
-	"hatch": {
-		bits: 3,
-		amount: 4
-	},
-	"rocketCargo": {
-		bits: 3,
-		amount: 3
-	},
-	"rocketHatch": {
-		bits: 3,
-		amount: 3
-	},
-	"shipCargo": {
-		bits: 4,
-		amount: 1
-	},
-	"shipHatch": {
-		bits: 4,
-		amount: 1
+	"crossedInitiation": {
+		bits: 1,
+		amounts: 1,
 	},
 	"climbing": {
-		bits: 2,
-		amount: 2
+		bits: 8,
+		amount: 4
 	},
 	"attributes": {
-		bits: 1,
-		amount: 4
+		bits: 4,
+		amount: 6
 	},
 	"gameInfo": {
 		bits: 8,
