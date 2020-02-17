@@ -4,7 +4,7 @@ import styles from './styles'
 import * as inputs from './inputs'
 import MatchList from './listMatches'
 import { addMatchStyles } from './addMatch'
-import { startLevelOptions, dataNames, dataTypes, assistOptions, gamePieceOptions, threeOptions, climbOptions, defaultAssistOption, defaultClimbOption, defaultGamePieceOption, defaultThreeOptions, powerCellPickup, fromGround, fromLoading, controlPanel,startLevel,crossedInitiation, autoMissed, autoBlocked, autoHigh, autoLow, gameNotes, teleNotes, autoNotes, climbNotes, timeRemainingHung} from './dataMap'
+import { startLevelOptions, dataNames, dataTypes, assistOptions, gamePieceOptions, threeOptions, climbOptions, defaultAssistOption, defaultClimbOption, defaultGamePieceOption, defaultThreeOptions, powerCellPickup, fromGround, fromLoading, controlPanel,startLevel,crossedInitiation, autoMissed, autoBlocked, autoHigh, autoLow, timeRemainingHung, nameOptions} from './dataMap'
 import { TextInput } from 'react-native';
 const headingPadding = 50;
 
@@ -80,7 +80,6 @@ export default class DataEntry extends React.Component {
 		let newData = {
 			...this.props.data
 		}
-		
 		for (let attribute in dataNames.attributes) {
 			if (!newData[dataNames.attributes[attribute]]) newData[dataNames.attributes[attribute]] = false;
 		}
@@ -93,11 +92,25 @@ export default class DataEntry extends React.Component {
 			newData[dataNames.crossedInitiation] = threeOptions[defaultThreeOptions];
 		}
 
+		if (!newData[dataNames.scoutName]) {
+			newData[dataNames.scoutName] = nameOptions[0];
+		}
+
 		if (!newData[dataNames.controlPanel.rotationControl]) {
 			newData[dataNames.controlPanel.rotationControl] = threeOptions[defaultThreeOptions];
+			
 		}
 		if (!newData[dataNames.controlPanel.positionControl]) {
-			newData[dataNames.controlPanel.postitionControl] = threeOptions[defaultThreeOptions];
+			newData[dataNames.controlPanel.positionControl] = threeOptions[defaultThreeOptions];
+		}
+		if (!newData[dataNames.climbing.ableToClimb]) {
+			newData[dataNames.climbing.ableToClimb] = threeOptions[defaultThreeOptions];
+		}
+		if (!newData[dataNames.climbing.hangingMobility]) {
+			newData[dataNames.climbing.hangingMobility] = threeOptions[defaultThreeOptions];
+		}
+		if (!newData[dataNames.climbing.balanced]) {
+			newData[dataNames.climbing.balanced] = threeOptions[defaultThreeOptions];
 		}
 		if (!newData[dataNames.climbing.assist]) {
 			newData[dataNames.climbing.assist] = threeOptions[defaultThreeOptions];
@@ -221,19 +234,7 @@ export default class DataEntry extends React.Component {
 				</inputs.ClickerInput>
 			</inputs.LabeledInput>
 		</Row>)
-		
-		{/*Autonmous Notes*/}
-		sandstormRockets.push(<Row key={key++}>
-			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Autonomous Notes"} style={dataEntryStyles.gamePieceInput}>
-				<inputs.NoteInput style={dataEntryStyles.gamePieceInput}
-					// value={this.dataNames.gameNotes.autoNotes}
-					// The line above should work, but it pukes
-					value={this.props.data[dataNames.gameNotes.autoNotes]}
-					onValueChange={(value) => this.onChanged(value)}>
-					{/* this.dataUpdated(value, dataNames.gameNotes.autoNotes) */}
-					</inputs.NoteInput>
-			</inputs.LabeledInput>
-		</Row>)
+	
 		// END OF AUTONOMOUS
  
 		// START OF TELEOP
@@ -329,13 +330,6 @@ export default class DataEntry extends React.Component {
 			</inputs.LabeledInput>
 		</Row>);
 
-		teleopRockets.push(<Row key={key++}>
-			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"TeleOp Notes"} style={dataEntryStyles.gamePieceInput}>
-				<inputs.NoteInput style={dataEntryStyles.gamePieceInput} text="TeleOp Notes" onChangeText={(text) => this.dataUpdated(text, dataNames.gameNotes.teleNotes)}></inputs.NoteInput>
-			</inputs.LabeledInput>
-		</Row>)
-
-
 		// END OF TELEOP
 
 		// START OF ENDGAME
@@ -388,7 +382,7 @@ export default class DataEntry extends React.Component {
 		</Row>)
 
 		climbing.push(<Row key={key++}>
-			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Generator Switch Level"} style={dataEntryStyles.gamePieceInput}>
+			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Is the Generator Switch Level"} style={dataEntryStyles.gamePieceInput}>
 				<inputs.PickerInput value={this.props.data[dataNames.climbing.balanced]} options={threeOptions}
 					onValueChange={(selected) => this.dataUpdated(selected, dataNames.climbing.balanced)}
 					style={{
@@ -404,17 +398,6 @@ export default class DataEntry extends React.Component {
 			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Time to Climb"} style={dataEntryStyles.gamePieceInput}>
 				<inputs.TimeInput value={this.props.data[dataNames.gameInfo.climbingTime]} onValueChange={(value) => this.dataUpdated(value, dataNames.gameInfo.climbingTime)}>
 				</inputs.TimeInput>
-			</inputs.LabeledInput>
-		</Row>)
-
-		climbing.push(<Row key={key++}>
-			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Time remaining when hung"} style={dataEntryStyles.gamePieceInput}>
-				<inputs.NoteInput style={dataEntryStyles.gamePieceInput} text="enter amount of time once successfully hung" onChangeText={(text) => this.dataUpdated(text, dataNames.gameNotes.timeRemainingHung)}></inputs.NoteInput>
-			</inputs.LabeledInput>
-		</Row>)
-		climbing.push(<Row key={key++}>
-			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Endgame Notes"} style={dataEntryStyles.gamePieceInput}>
-				<inputs.NoteInput style={dataEntryStyles.gamePieceInput} text="Other userful information" onChangeText={(text) => this.dataUpdated(text, dataNames.gameNotes.climbNotes)}></inputs.NoteInput>
 			</inputs.LabeledInput>
 		</Row>)
 
@@ -448,6 +431,29 @@ export default class DataEntry extends React.Component {
 					<MatchList editable matches={[this.props.data]}></MatchList>
 				</Row>
 				<View style={{ height: headingPadding }}></View>
+				<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Scout Name"} style={dataEntryStyles.gamePieceInput}>
+					<inputs.PickerInput value={this.props.data[dataNames.scoutName]} options={nameOptions}
+					onValueChange={(selected) => this.dataUpdated(selected, dataNames.scoutName)}
+					style={{
+						backgroundColor:
+							this.props.data[dataNames.climbing.assist] == climbOptions[defaultThreeOptions] ?
+								styles.colors.tertiary.bg : styles.colors.secondary.bg
+					}}
+				></inputs.PickerInput>
+			</inputs.LabeledInput>
+				<Row>
+					<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Crossed Initiation Line"} style={dataEntryStyles.gamePieceInput}>
+						<inputs.PickerInput value={this.props.data[dataNames.crossedInitiation]} options={threeOptions}
+							onValueChange={(selected) => this.dataUpdated(selected, dataNames.crossedInitiation)}
+							style={{
+								backgroundColor:
+									this.props.data[dataNames.climbing.assist] == climbOptions[defaultThreeOptions] ?
+										styles.colors.tertiary.bg : styles.colors.secondary.bg
+							}}
+						></inputs.PickerInput>
+					</inputs.LabeledInput>
+
+</Row>
 				{/* Auto phase */}
 				<Row>
 					<Text style={dataEntryStyles.header}>
