@@ -247,68 +247,6 @@ export class NoteInput extends React.Component {
 			rawText: "",
 			editing: true
 		}
-
-	constructor(props) {
-		super(props);
-		this.state.rawText = this.getDisplayValue();
-	}
-	words = "";
-	onChanged(text) {
-		let newText = '';
-		let numbers = '0123456789' + (this.props.allowFloat ? "." : "");
-
-		for (let i = 0; i < text.length; i++) {
-			if (numbers.indexOf(text[i]) > -1) {
-				newText += text[i];
-			}
-		}
-		this.setState({ rawNumber: newText })
-	}
-	getDisplayValue() {
-		let output;
-		if (this.props.allowEmpty && this.state.rawText == 0) return "";
-		if (this.state.rawText != null && this.state.editing) return this.state.rawText;
-		if (typeof this.props.value == "number") {
-			output = this.props.value.toFixed(1);
-			if (!this.props.allowFloat) {
-				output = parseInt(this.props.value).toString();
-			}
-		}
-		else if (typeof this.props.value == "string") {
-			output = this.props.value;
-		}
-		else if (typeof this.state.value == "number") {
-			output = this.state.value.toFixed(1);
-			if (!this.props.allowFloat) {
-				output = parseInt(this.state.value).toString();
-			}
-		}
-		else {
-			output = this.state.value
-		}
-		if (output == "" || output == "NaN" || output == "0.0") return "0";
-		else return output;
-	}
-	done() {
-		if (this.state.rawText == "") this.state.rawText = "Enter AutoNotes";
-		this.words = this.props.allowFloat ? parseFloat(this.state.rawText) : parseInt(this.state.rawText);
-		if (this.props.onValueChange) this.props.onValueChange(this.words);
-		this.setState({ value: this.words, editing: false })
-	}
-	render() {
-		return (
-			<TextInput
-				style={[this.props.style, styles.inputs.inputBox]}
-				onChangeText={(text) => this.onChanged(text)}
-				value={this.getDisplayValue()}
-				maxLength={this.props.maxLength}  //setting limit of input
-				returnKeyType='done'
-				onBlur={() => this.done()}
-				onSubmitEditing={() => this.done()}
-				onFocus={() => this.setState({ editing: true })}
-			/>
-		)
-	}
 		// constructor(props) {
 		// 	super(props);
 		// 	this.state.rawText = this.getDisplayValue();
@@ -322,7 +260,7 @@ export class NoteInput extends React.Component {
 		// 	else return output;
 		// }
 		onChanged(value) {
-			if (this.props.onValueChange) this.props.onValueChange(value)
+			if (this.props.onValueChange) this.props.value(value)
 		}
 		render() {
 			return (

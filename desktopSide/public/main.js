@@ -133,7 +133,7 @@ function updateMessage(message) {
 		message = "Show the first QR code";
 	}
 	else if (matchNumber > totalQRCodes && started) {
-		message = "ERROR. Talk to Oliver";
+		message = "ERROR. Talk to Alex";
 	}
 	else if (matchNumber == totalQRCodes && started) {
 		message = "Done reading QR Codes.";
