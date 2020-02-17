@@ -80,7 +80,7 @@ export default class DataEntry extends React.Component {
 		let newData = {
 			...this.props.data
 		}
-
+		
 		for (let attribute in dataNames.attributes) {
 			if (!newData[dataNames.attributes[attribute]]) newData[dataNames.attributes[attribute]] = false;
 		}
@@ -96,17 +96,8 @@ export default class DataEntry extends React.Component {
 		if (!newData[dataNames.controlPanel.rotationControl]) {
 			newData[dataNames.controlPanel.rotationControl] = threeOptions[defaultThreeOptions];
 		}
-		if (!newData[dataNames.controlPanel.positionControl]) {
-			newData[dataNames.controlPanel.positionControl] = threeOptions[defaultThreeOptions];
-		}
-		if (!newData[dataNames.climbing.ableToClimb]) {
-			newData[dataNames.climbing.ableToClimb] = threeOptions[defaultThreeOptions];
-		}
-		if (!newData[dataNames.climbing.hangingMobility]) {
-			newData[dataNames.climbing.hangingMobility] = threeOptions[defaultThreeOptions];
-		}
-		if (!newData[dataNames.climbing.balanced]) {
-			newData[dataNames.climbing.balanced] = threeOptions[defaultThreeOptions];
+		if (!newData[dataNames.controlPanel.rotationControl]) {
+			newData[dataNames.controlPanel.postitionControl] = threeOptions[defaultThreeOptions];
 		}
 		if (!newData[dataNames.climbing.assist]) {
 			newData[dataNames.climbing.assist] = threeOptions[defaultThreeOptions];
@@ -361,7 +352,7 @@ export default class DataEntry extends React.Component {
 		</Row>)
 
 		climbing.push(<Row key={key++}>
-			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Is the Generator Switch Level"} style={dataEntryStyles.gamePieceInput}>
+			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Generator Switch Level"} style={dataEntryStyles.gamePieceInput}>
 				<inputs.PickerInput value={this.props.data[dataNames.climbing.balanced]} options={threeOptions}
 					onValueChange={(selected) => this.dataUpdated(selected, dataNames.climbing.balanced)}
 					style={{
