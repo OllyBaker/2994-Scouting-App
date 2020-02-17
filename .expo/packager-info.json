@@ -1,4 +1,9 @@
 {
-  "packagerPort": null,
-  "packagerPid": null
+  "packagerPort": 19001,
+  "packagerPid": 11944,
+  "devToolsPort": 19002,
+  "expoServerPort": 19000,
+  "expoServerNgrokUrl": "https://x4-z7n.anonymous.2994-scouting-app.exp.direct",
+  "packagerNgrokUrl": "https://packager.x4-z7n.anonymous.2994-scouting-app.exp.direct",
+  "ngrokPid": 12428
 }

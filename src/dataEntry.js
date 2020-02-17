@@ -96,11 +96,47 @@ export default class DataEntry extends React.Component {
 		if (!newData[dataNames.controlPanel.rotationControl]) {
 			newData[dataNames.controlPanel.rotationControl] = threeOptions[defaultThreeOptions];
 		}
-		if (!newData[dataNames.controlPanel.rotationControl]) {
+		if (!newData[dataNames.controlPanel.positionControl]) {
 			newData[dataNames.controlPanel.postitionControl] = threeOptions[defaultThreeOptions];
 		}
 		if (!newData[dataNames.climbing.assist]) {
 			newData[dataNames.climbing.assist] = threeOptions[defaultThreeOptions];
+		}
+		if (!newData[dataNames.climbing.balanced]) {
+			newData[dataNames.climbing.balanced] = threeOptions[defaultThreeOptions];
+		}
+		if (!newData[dataNames.climbing.ableToClimb]) {
+			newData[dataNames.climbing.ableToClimb] = threeOptions[defaultThreeOptions];
+		}
+		if (!newData[dataNames.climbing.hangingMobility]) {
+			newData[dataNames.climbing.hangingMobility] = threeOptions[defaultThreeOptions];
+		}
+		if (!newData[dataNames.shooting.autoLow]) {
+			newData[dataNames.shooting.autoLow] = 0;
+		}
+		if (!newData[dataNames.shooting.autoHigh]) {
+			newData[dataNames.shooting.autoHigh] = 0;
+		}
+		if (!newData[dataNames.shooting.autoMissed]) {
+			newData[dataNames.shooting.autoMissed] = 0;
+		}
+		if (!newData[dataNames.shooting.teleLow]) {
+			newData[dataNames.shooting.teleLow] = 0;
+		}
+		if (!newData[dataNames.shooting.teleHigh]) {
+			newData[dataNames.shooting.teleHigh] = 0;
+		}
+		if (!newData[dataNames.shooting.teleMissed]) {
+			newData[dataNames.shooting.teleMissed] = 0;
+		}
+		if (!newData[dataNames.shooting.teleBlocked]) {
+			newData[dataNames.shooting.teleBlocked] = 0;
+		}
+		if (!newData[dataNames.powerCellPickup.fromGround]) {
+			newData[dataNames.powerCellPickup.fromGround] = 0;
+		}
+		if (!newData[dataNames.powerCellPickup.fromLoading]) {
+			newData[dataNames.powerCellPickup.fromLoading] = 0;
 		}
 
 		this.props.onDataChange(newData);
