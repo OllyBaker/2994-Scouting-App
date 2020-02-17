@@ -4,7 +4,7 @@ import styles from './styles'
 import * as inputs from './inputs'
 import MatchList from './listMatches'
 import { addMatchStyles } from './addMatch'
-import { startLevelOptions, dataNames, dataTypes, assistOptions, gamePieceOptions, threeOptions, climbOptions, defaultAssistOption, defaultClimbOption, defaultGamePieceOption, defaultThreeOptions, powerCellPickup, fromGround, fromLoading, controlPanel,startLevel,crossedInitiation, autoMissed, autoBlocked, autoHigh, autoLow, gameNotes, teleNotes, autoNotes, climbNotes, timeRemainingHung, nameOptions} from './dataMap'
+import { startLevelOptions, dataNames, dataTypes, assistOptions, gamePieceOptions, threeOptions, climbOptions, defaultAssistOption, defaultClimbOption, defaultGamePieceOption, defaultThreeOptions, powerCellPickup, fromGround, fromLoading, controlPanel,startLevel,crossedInitiation, autoMissed, autoBlocked, autoHigh, autoLow, timeRemainingHung, nameOptions} from './dataMap'
 import { TextInput } from 'react-native';
 import react, { Component } from 'react';
 import ScrollPicker from 'react-native-wheel-scroll-picker';
@@ -117,6 +117,42 @@ export default class DataEntry extends React.Component {
 		if (!newData[dataNames.climbing.assist]) {
 			newData[dataNames.climbing.assist] = threeOptions[defaultThreeOptions];
 		}
+		if (!newData[dataNames.climbing.balanced]) {
+			newData[dataNames.climbing.balanced] = threeOptions[defaultThreeOptions];
+		}
+		if (!newData[dataNames.climbing.ableToClimb]) {
+			newData[dataNames.climbing.ableToClimb] = threeOptions[defaultThreeOptions];
+		}
+		if (!newData[dataNames.climbing.hangingMobility]) {
+			newData[dataNames.climbing.hangingMobility] = threeOptions[defaultThreeOptions];
+		}
+		if (!newData[dataNames.shooting.autoLow]) {
+			newData[dataNames.shooting.autoLow] = 0;
+		}
+		if (!newData[dataNames.shooting.autoHigh]) {
+			newData[dataNames.shooting.autoHigh] = 0;
+		}
+		if (!newData[dataNames.shooting.autoMissed]) {
+			newData[dataNames.shooting.autoMissed] = 0;
+		}
+		if (!newData[dataNames.shooting.teleLow]) {
+			newData[dataNames.shooting.teleLow] = 0;
+		}
+		if (!newData[dataNames.shooting.teleHigh]) {
+			newData[dataNames.shooting.teleHigh] = 0;
+		}
+		if (!newData[dataNames.shooting.teleMissed]) {
+			newData[dataNames.shooting.teleMissed] = 0;
+		}
+		if (!newData[dataNames.shooting.teleBlocked]) {
+			newData[dataNames.shooting.teleBlocked] = 0;
+		}
+		if (!newData[dataNames.powerCellPickup.fromGround]) {
+			newData[dataNames.powerCellPickup.fromGround] = 0;
+		}
+		if (!newData[dataNames.powerCellPickup.fromLoading]) {
+			newData[dataNames.powerCellPickup.fromLoading] = 0;
+		}
 
 		this.props.onDataChange(newData);
 		this.originalValue = this.props.data;
@@ -200,19 +236,7 @@ export default class DataEntry extends React.Component {
 				</inputs.ClickerInput>
 			</inputs.LabeledInput>
 		</Row>)
-		
-		{/*Autonmous Notes*/}
-		sandstormRockets.push(<Row key={key++}>
-			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Autonomous Notes"} style={dataEntryStyles.gamePieceInput}>
-				<inputs.NoteInput style={dataEntryStyles.gamePieceInput}
-					// value={this.dataNames.gameNotes.autoNotes}
-					// The line above should work, but it pukes
-					value={this.props.data[dataNames.gameNotes.autoNotes]}
-					onValueChange={(value) => this.onChanged(value)}>
-					{/* this.dataUpdated(value, dataNames.gameNotes.autoNotes) */}
-					</inputs.NoteInput>
-			</inputs.LabeledInput>
-		</Row>)
+	
 		// END OF AUTONOMOUS
  
 		// START OF TELEOP
@@ -308,13 +332,6 @@ export default class DataEntry extends React.Component {
 			</inputs.LabeledInput>
 		</Row>);
 
-		teleopRockets.push(<Row key={key++}>
-			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"TeleOp Notes"} style={dataEntryStyles.gamePieceInput}>
-				<inputs.NoteInput style={dataEntryStyles.gamePieceInput} text="TeleOp Notes" onChangeText={(text) => this.dataUpdated(text, dataNames.gameNotes.teleNotes)}></inputs.NoteInput>
-			</inputs.LabeledInput>
-		</Row>)
-
-
 		// END OF TELEOP
 
 		// START OF ENDGAME
@@ -383,17 +400,6 @@ export default class DataEntry extends React.Component {
 			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Time to Climb"} style={dataEntryStyles.gamePieceInput}>
 				<inputs.TimeInput value={this.props.data[dataNames.gameInfo.climbingTime]} onValueChange={(value) => this.dataUpdated(value, dataNames.gameInfo.climbingTime)}>
 				</inputs.TimeInput>
-			</inputs.LabeledInput>
-		</Row>)
-
-		climbing.push(<Row key={key++}>
-			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Time remaining when hung"} style={dataEntryStyles.gamePieceInput}>
-				<inputs.NoteInput style={dataEntryStyles.gamePieceInput} text="enter amount of time once successfully hung" onChangeText={(text) => this.dataUpdated(text, dataNames.gameNotes.timeRemainingHung)}></inputs.NoteInput>
-			</inputs.LabeledInput>
-		</Row>)
-		climbing.push(<Row key={key++}>
-			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Endgame Notes"} style={dataEntryStyles.gamePieceInput}>
-				<inputs.NoteInput style={dataEntryStyles.gamePieceInput} text="Other userful information" onChangeText={(text) => this.dataUpdated(text, dataNames.gameNotes.climbNotes)}></inputs.NoteInput>
 			</inputs.LabeledInput>
 		</Row>)
 

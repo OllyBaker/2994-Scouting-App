@@ -103,8 +103,7 @@ export default class AddMatchPopup extends React.Component {
 	state = {
 		teamNumber: 0,
 		matchNumber: 0,
-		teamColour: 0,
-		scoutName: "name"
+		
 	}
 	render() {
 		let disabled = !(this.state.teamNumber && this.state.matchNumber);
@@ -137,9 +136,6 @@ export default class AddMatchPopup extends React.Component {
 							}}></inputs.PickerInput>
 					</inputs.LabeledInput> */}
 					
-					<inputs.LabeledInput textStyle={styles.font.inputHeader} style={addMatchStyles.numberInput} label="Scout's Name">
-						<inputs.NoteInput style={dataEntryStyles.gamePieceInput} text="Name" onChangeText={(text) => this.dataUpdated(text, dataNames.gameNotes.autoNotes)}></inputs.NoteInput>
-					</inputs.LabeledInput>
 				</View>
 				{/* Submit and cancel buttons */}
 				<View style={addMatchStyles.controlBar}>

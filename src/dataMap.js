@@ -47,13 +47,6 @@ export const dataNames = {
 		matchNumber: "matchNumber",
 		teamNumber: "teamNumber"
 	},
-	gameNotes: {
-		autoNotes: "notes-autonomous",
-		teleNotes: "notes-teleop",
-		climbNotes: "notes-endgame",
-		overallNotes: "noteO",
-		timeRemainingHung: "note-time-remaining"
-	}
 }
 
 export const threeOptions = [
