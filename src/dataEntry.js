@@ -6,6 +6,8 @@ import MatchList from './listMatches'
 import { addMatchStyles } from './addMatch'
 import { startLevelOptions, dataNames, dataTypes, assistOptions, gamePieceOptions, threeOptions, climbOptions, defaultAssistOption, defaultClimbOption, defaultGamePieceOption, defaultThreeOptions, powerCellPickup, fromGround, fromLoading, controlPanel,startLevel,crossedInitiation, autoMissed, autoBlocked, autoHigh, autoLow, gameNotes, teleNotes, autoNotes, climbNotes, timeRemainingHung, nameOptions} from './dataMap'
 import { TextInput } from 'react-native';
+import react, { Component } from 'react';
+import ScrollPicker from 'react-native-wheel-scroll-picker';
 const headingPadding = 50;
 
 const dataEntryStyles = {
@@ -434,20 +436,22 @@ export default class DataEntry extends React.Component {
 								styles.colors.tertiary.bg : styles.colors.secondary.bg
 					}}
 				></inputs.PickerInput>
-			</inputs.LabeledInput>
-				<Row>
-					<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Crossed Initiation Line"} style={dataEntryStyles.gamePieceInput}>
-						<inputs.PickerInput value={this.props.data[dataNames.crossedInitiation]} options={threeOptions}
-							onValueChange={(selected) => this.dataUpdated(selected, dataNames.crossedInitiation)}
-							style={{
-								backgroundColor:
-									this.props.data[dataNames.climbing.assist] == climbOptions[defaultThreeOptions] ?
-										styles.colors.tertiary.bg : styles.colors.secondary.bg
-							}}
-						></inputs.PickerInput>
-					</inputs.LabeledInput>
-
-</Row>
+				</inputs.LabeledInput>
+				<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Scout Name"} style={dataEntryStyles.gamePieceInput}>
+					<ScrollPicker
+						value={this.props.data[dataNames.scoutName]}
+						dataSource ={nameOptions}
+						onValueChange={(selected) => this.dataUpdated(selected, dataNames.scoutName)}
+						wrapperHeight={180}
+						wrapperWidth={150}
+						wrapperBackground={'#FFFFFF'}
+						itemHeight={60}
+						highlightColor={'#d8d8d8'}
+						highlightBorderWidth={2}
+						activeItemColor={'#222121'}
+						itemColor={'#B4B4B4'}
+					></ScrollPicker>
+				</inputs.LabeledInput>
 				{/* Auto phase */}
 				<Row>
 					<Text style={dataEntryStyles.header}>
