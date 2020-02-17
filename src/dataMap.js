@@ -1,14 +1,8 @@
 export const dataNames = {
-	startLevel: ["startlvl"],
 	crossedInitiation: ["crossedinitiation"],
-	cargo: ["cargo1", "cargo2", "cargo3", "cargo4", "cargo5"],
-	hatch: ["hatch1", "hatch2", "hatch3", "hatch4"],
-	rocketCargo: ["1PC", "2PC", "3PC", "4PC", "5PC"],
-	rocketHatch: ["rock1h", "rock2h", "rock3h"],
-	shipCargo: ['shipc'],
-	shipHatch: ['shiph'],
 	teamColour: ['Blue', 'Red'],
 	colourChoice: ['colChoice'],
+	scoutName: ['scoutName'],
 	climbing: {
 		ableToClimb: "abletoclibm",
 		hangingMobility: "hangingMobility",
@@ -37,10 +31,8 @@ export const dataNames = {
 	attributes: {
 		broken: "broken",
 		tip: "tip",
-		cargoFromDepot: "depot",
-		hatchesFromFloor: "floor",
 		moveTrench: "trench",
-		powerCellCapacity: "pc-capacity"
+		powerCellCapacity: "pc_capacity"
 	},
 	gameInfo: {
 		opposingSideTime: "opposide",
@@ -72,6 +64,36 @@ export const threeOptions = [
 
 export const defaultThreeOptions = 0;
 
+export const nameOptions = [
+	"Enter Name",
+	"Aaron_J",
+	"Alex_H",
+	"Alvin_M",
+	"Aquila_R",
+	"Connor_L",
+	"Edward_W",
+	"Ella_R",
+	"Guinevere_H",
+	"Jad_H",
+	"Joanne_T",
+	"Joseph_C",
+	"Joshua_N",
+	"Joshua_J",
+	"Kevin_J",
+	"Kieran_C",
+	"Kyle",
+	"Liam_M",
+	"MaiLyn_M",
+	"Matthew_M",
+	"Neha_M",
+	"Oliver_B",
+	"Rhys_L",
+	"River_C",
+	"Rumaisa_S",
+	"Ryan_J",
+	"Sydney_D",
+	"Gustavo_R"
+]
 export const climbOptions = [
 	"No climb",
 	"Level 1",

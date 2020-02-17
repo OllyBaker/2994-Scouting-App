@@ -4,7 +4,7 @@ import styles from './styles'
 import * as inputs from './inputs'
 import MatchList from './listMatches'
 import { addMatchStyles } from './addMatch'
-import { startLevelOptions, dataNames, dataTypes, assistOptions, gamePieceOptions, threeOptions, climbOptions, defaultAssistOption, defaultClimbOption, defaultGamePieceOption, defaultThreeOptions, powerCellPickup, fromGround, fromLoading, controlPanel,startLevel,crossedInitiation, autoMissed, autoBlocked, autoHigh, autoLow, gameNotes, teleNotes, autoNotes, climbNotes, timeRemainingHung} from './dataMap'
+import { startLevelOptions, dataNames, dataTypes, assistOptions, gamePieceOptions, threeOptions, climbOptions, defaultAssistOption, defaultClimbOption, defaultGamePieceOption, defaultThreeOptions, powerCellPickup, fromGround, fromLoading, controlPanel,startLevel,crossedInitiation, autoMissed, autoBlocked, autoHigh, autoLow, gameNotes, teleNotes, autoNotes, climbNotes, timeRemainingHung, nameOptions} from './dataMap'
 import { TextInput } from 'react-native';
 const headingPadding = 50;
 
@@ -92,8 +92,13 @@ export default class DataEntry extends React.Component {
 			newData[dataNames.crossedInitiation] = threeOptions[defaultThreeOptions];
 		}
 
+		if (!newData[dataNames.scoutName]) {
+			newData[dataNames.scoutName] = nameOptions[0];
+		}
+
 		if (!newData[dataNames.controlPanel.rotationControl]) {
 			newData[dataNames.controlPanel.rotationControl] = threeOptions[defaultThreeOptions];
+			
 		}
 		if (!newData[dataNames.controlPanel.positionControl]) {
 			newData[dataNames.controlPanel.positionControl] = threeOptions[defaultThreeOptions];
@@ -420,6 +425,29 @@ export default class DataEntry extends React.Component {
 					<MatchList editable matches={[this.props.data]}></MatchList>
 				</Row>
 				<View style={{ height: headingPadding }}></View>
+				<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Scout Name"} style={dataEntryStyles.gamePieceInput}>
+					<inputs.PickerInput value={this.props.data[dataNames.scoutName]} options={nameOptions}
+					onValueChange={(selected) => this.dataUpdated(selected, dataNames.scoutName)}
+					style={{
+						backgroundColor:
+							this.props.data[dataNames.climbing.assist] == climbOptions[defaultThreeOptions] ?
+								styles.colors.tertiary.bg : styles.colors.secondary.bg
+					}}
+				></inputs.PickerInput>
+			</inputs.LabeledInput>
+				<Row>
+					<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Crossed Initiation Line"} style={dataEntryStyles.gamePieceInput}>
+						<inputs.PickerInput value={this.props.data[dataNames.crossedInitiation]} options={threeOptions}
+							onValueChange={(selected) => this.dataUpdated(selected, dataNames.crossedInitiation)}
+							style={{
+								backgroundColor:
+									this.props.data[dataNames.climbing.assist] == climbOptions[defaultThreeOptions] ?
+										styles.colors.tertiary.bg : styles.colors.secondary.bg
+							}}
+						></inputs.PickerInput>
+					</inputs.LabeledInput>
+
+</Row>
 				{/* Auto phase */}
 				<Row>
 					<Text style={dataEntryStyles.header}>
