@@ -1,1 +1,9 @@
-{}
+{
+  "devToolsPort": 19002,
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 18364,
+  "expoServerNgrokUrl": "https://7e-bjs.oliverjbaker.2994-scouting-app.exp.direct",
+  "packagerNgrokUrl": "https://packager.7e-bjs.oliverjbaker.2994-scouting-app.exp.direct",
+  "ngrokPid": 16256
+}

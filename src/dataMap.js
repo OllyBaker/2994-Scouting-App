@@ -1,10 +1,10 @@
 export const dataNames = {
 	crossedInitiation: ["crossedinitiation"],
-	teamColour: ['Blue', 'Red'],
-	colourChoice: ['colChoice'],
+	// teamColour: ['Blue', 'Red'],
+	// colourChoice: ['colChoice'],
 	scoutName: ['scoutName'],
 	climbing: {
-		ableToClimb: "abletoclibm",
+		ableToClimb: "abletoclimb",
 		hangingMobility: "hangingMobility",
 		assist: "assist",
 		balanced: "balance"
@@ -32,12 +32,13 @@ export const dataNames = {
 		broken: "broken",
 		tip: "tip",
 		moveTrench: "trench",
-		powerCellCapacity: "pc_capacity"
+		powerCellCapacity: "pc_capacity",
+		powerCellFloor: "cellFromFloor"
 	},
 	gameInfo: {
-		opposingSideTime: "opposide",
+		// opposingSideTime: "opposide",
 		penaltyPoints: "ppoints",
-		fuelCellsDropped: "hdropped",
+		fuelCellsDropped: "cellsDropped",
 		parkingTime: "parktimeGI",
 		climbingTime: "climbtimeGI",
 		rotationTime: "rotationGI",
@@ -46,7 +47,7 @@ export const dataNames = {
 	matchInfo: {
 		matchNumber: "matchNumber",
 		teamNumber: "teamNumber"
-	},
+	}
 }
 
 export const threeOptions = [
@@ -67,10 +68,10 @@ export const nameOptions = [
 	"Guinevere_H",
 	"Jad_H",
 	"Joanne_T",
-	"Joseph_C",
+	// "Joseph_C",
 	"Joshua_N",
 	"Kevin_J",
-	"Liam_M",
+	// "Liam_M",
 	"MaiLyn_M",
 	"Matthew_M",
 	"Neha_M",

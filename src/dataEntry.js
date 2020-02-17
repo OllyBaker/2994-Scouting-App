@@ -153,6 +153,10 @@ export default class DataEntry extends React.Component {
 		if (!newData[dataNames.powerCellPickup.fromLoading]) {
 			newData[dataNames.powerCellPickup.fromLoading] = 0;
 		}
+		
+		if (!newData[dataNames.attributes.powerCellCapacity]) {
+			newData[dataNames.attributes.powerCellCapacity] = 0;
+		}
 
 		this.props.onDataChange(newData);
 		this.originalValue = this.props.data;
@@ -443,21 +447,6 @@ export default class DataEntry extends React.Component {
 					}}
 				></inputs.PickerInput>
 				</inputs.LabeledInput>
-				<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Scout Name"} style={dataEntryStyles.gamePieceInput}>
-					<ScrollPicker
-						value={this.props.data[dataNames.scoutName]}
-						dataSource ={nameOptions}
-						onValueChange={(selected) => this.dataUpdated(selected, dataNames.scoutName)}
-						wrapperHeight={180}
-						wrapperWidth={150}
-						wrapperBackground={'#FFFFFF'}
-						itemHeight={60}
-						highlightColor={'#d8d8d8'}
-						highlightBorderWidth={2}
-						activeItemColor={'#222121'}
-						itemColor={'#B4B4B4'}
-					></ScrollPicker>
-				</inputs.LabeledInput>
 				{/* Auto phase */}
 				<Row>
 					<Text style={dataEntryStyles.header}>
@@ -488,15 +477,15 @@ export default class DataEntry extends React.Component {
 				<this.Toggle label="Did the robot break?" variable={dataNames.attributes.broken}></this.Toggle>
 				<this.Toggle label="Did the robot tip?" variable={dataNames.attributes.tip}></this.Toggle>
 				{/*<this.Toggle label="Can the robot pick up cargo from the depot?" variable={dataNames.attributes.cargoFromDepot}></this.Toggle>*/}
-				<this.Toggle label="Can it pick up fuel cells from the floor?" variable={dataNames.attributes.hatchesFromFloor}></this.Toggle>
+				<this.Toggle label="Can it pick up fuel cells from the floor?" variable={dataNames.attributes.powerCellFloor}></this.Toggle>
 				<this.Toggle label="Can it go move through the trench?" variable={dataNames.attributes.moveTrench}></this.Toggle>
 
-				<Row>
+				{/* <Row>
 					<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Time spent on opponents side of field"} style={dataEntryStyles.gamePieceInput}>
 						<inputs.TimeInput value={this.props.data[dataNames.gameInfo.opposingSideTime]} onValueChange={(value) => this.dataUpdated(value, dataNames.gameInfo.opposingSideTime)}>
 						</inputs.TimeInput>
 					</inputs.LabeledInput>
-				</Row>
+				</Row> */}
 
 				{/*<Row>
 					<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Total penalty points earned by alliance"} style={dataEntryStyles.gamePieceInput}>
