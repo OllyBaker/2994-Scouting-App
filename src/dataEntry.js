@@ -99,6 +99,9 @@ export default class DataEntry extends React.Component {
 		if (!newData[dataNames.controlPanel.rotationControl]) {
 			newData[dataNames.controlPanel.postitionControl] = threeOptions[defaultThreeOptions];
 		}
+		if (!newData[dataNames.climbing.assist]) {
+			newData[dataNames.climbing.assist] = threeOptions[defaultThreeOptions];
+		}
 
 		this.props.onDataChange(newData);
 		this.originalValue = this.props.data;
