@@ -16,14 +16,13 @@ export const dataNames = {
 		balanced: "balance"
 	},
 	shooting: {
-		autoLow: ['lowA'],
-		autoHigh: ['highA'],
-		autoMissed: ['missA'],
-		autoBlocked: ["blockedA"],
-		teleLow: ['lowT'],
-		teleHigh: ['highT'],
-		teleMissed: ['missT'],
-		teleBlocked: ["blockedT"]	
+		autoLow: ['lowAuto'],
+		autoHigh: ['highAuto'],
+		autoMissed: ['missAuto'],
+		teleLow: ['lowTele'],
+		teleHigh: ['highTele'],
+		teleMissed: ['missTele'],
+		teleBlocked: ["blockedTele"]
 	},
 	controlPanel: {
 		rotationControl: ["rotationCP"],
