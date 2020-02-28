@@ -1,8 +1,6 @@
 export const dataNames = {
 	crossedInitiation: ["crossedinitiation"],
-	// teamColour: ['Blue', 'Red'],
-	// colourChoice: ['colChoice'],
-	scoutName: ['scoutName'],
+	// scoutName: ['scoutName'],
 	climbing: {
 		ableToClimb: "abletoclimb",
 		hangingMobility: "hangingMobility",
@@ -46,7 +44,9 @@ export const dataNames = {
 	},
 	matchInfo: {
 		matchNumber: "matchNumber",
-		teamNumber: "teamNumber"
+		teamNumber: "teamNumber",
+		scoutName: "scoutName",
+		fieldPos: "fieldPos"
 	}
 }
 
@@ -58,9 +58,20 @@ export const threeOptions = [
 
 export const defaultThreeOptions = 0;
 
+export const fieldPosition = [
+	"Not Chosen",
+	"Blue 1",
+	"Blue 2",
+	"Blue 3",
+	"Red 1",
+	"Red 2",
+	"Red 3"
+]
+
 export const nameOptions = [
 	"Enter Name",
-	"Aaron_J",
+	// "Aaron_J",
+	"Guest",
 	"Alex_H",
 	"Alvin_M",
 	"Edward_W",
@@ -68,6 +79,7 @@ export const nameOptions = [
 	"Guinevere_H",
 	"Jad_H",
 	"Joanne_T",
+	"Kyle_L",
 	// "Joseph_C",
 	"Joshua_N",
 	"Kevin_J",
@@ -76,8 +88,8 @@ export const nameOptions = [
 	"Matthew_M",
 	"Neha_M",
 	"River_C",
-	"Ryan_J",
-	"Sydney_D",
+	// "Ryan_J",
+	// "Sydney_D",
 	"Gustavo_R"
 ]
 export const climbOptions = [

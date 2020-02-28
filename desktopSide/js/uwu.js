@@ -51,7 +51,7 @@ function exportCSVFile(headers, items, fileTitle) {
 var headers = {
     teamNumber: 'Team Number'.replace(/,/g, ''), // remove commas to avoid errors
     matchNumber: "Match Number",
-    scoutName: "Scout",
+    scoutName: "Scout".replace(/,/g, ''),
     broken: "Broken?",
     tip: "Did robot tip?",
     trench: "Travel through trench",
@@ -64,6 +64,7 @@ var headers = {
     rotationGI: "Rotation Time",
     positionGI: "Position Time",
     crossedinitiation: "Crossed line",
+    fieldPos: "Field Position",
     rotationCP: "Rotation CP?",
     positionCP: "Position CP?",
     abletoclimb: "Can it climb?",
@@ -147,7 +148,7 @@ function add(lmao) {
     itemsFormatted.push({
         teamNumber: String(item.teamNumber).replace(/,/g, ''), // remove commas to avoid errors
         matchNumber: String(item.matchNumber),
-        scoutName: String(item.scoutName),
+        scoutName: String(item.scoutName).replace(/,/g, ''),
         broken: String(item.broken),
         tip: String(item.tip),
         trench: String(item.trench),
@@ -160,6 +161,7 @@ function add(lmao) {
         rotationGI: String(item.rotationGI),
         positionGI: String(item.positionGI),
         crossedinitiation: String(item.crossedinitiation),
+        fieldPos: String(item.fieldPos),
         rotationCP: String(item.rotationCP),
         positionCP: String(item.positionCP),
         abletoclimb: String(item.abletoclimb),

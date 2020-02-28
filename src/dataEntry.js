@@ -4,7 +4,7 @@ import styles from './styles'
 import * as inputs from './inputs'
 import MatchList from './listMatches'
 import { addMatchStyles } from './addMatch'
-import { startLevelOptions, dataNames, dataTypes, assistOptions, gamePieceOptions, threeOptions, climbOptions, defaultAssistOption, defaultClimbOption, defaultGamePieceOption, defaultThreeOptions, powerCellPickup, fromGround, fromLoading, controlPanel,startLevel,crossedInitiation, autoMissed, autoBlocked, autoHigh, autoLow, timeRemainingHung, nameOptions} from './dataMap'
+import { startLevelOptions, dataNames, dataTypes, assistOptions, gamePieceOptions, threeOptions, climbOptions, defaultAssistOption, defaultClimbOption, defaultGamePieceOption, defaultThreeOptions, powerCellPickup, fromGround, fromLoading, controlPanel,startLevel,crossedInitiation, autoMissed, autoBlocked, autoHigh, autoLow, timeRemainingHung, nameOptions, fieldPosition} from './dataMap'
 import { TextInput } from 'react-native';
 import react, { Component } from 'react';
 import ScrollPicker from 'react-native-wheel-scroll-picker';
@@ -56,7 +56,8 @@ const Spacer = (props) => (<View style={{ flex: 0.1 }}></View>);
 
 export default class DataEntry extends React.Component {
 	state = {
-		dead: false
+		dead: false,
+		scoutName: 0
 	}
 	Toggle = (props) => <Row style={{ marginBottom: 10 }}>
 		<inputs.LabeledInput textStyle={styles.font.dataEntry} label={props.label} style={dataEntryStyles.gamePieceInput}>
@@ -90,17 +91,20 @@ export default class DataEntry extends React.Component {
 			if (!newData[dataNames.gameInfo[gameInfo]]) newData[dataNames.gameInfo[gameInfo]] = 0;
 		}
 
+
 		if (!newData[dataNames.crossedInitiation]) {
 			newData[dataNames.crossedInitiation] = threeOptions[defaultThreeOptions];
 		}
 
-		if (!newData[dataNames.scoutName]) {
-			newData[dataNames.scoutName] = nameOptions[0];
+		if (!newData[dataNames.matchInfo.scoutName]) {
+			newData[dataNames.matchInfo.scoutName] = nameOptions[0];
 		}
 
+		if (!newData[dataNames.matchInfo.fieldPos]) {
+			newData[dataNames.matchInfo.fieldPos] = fieldPosition[0];
+		}
 		if (!newData[dataNames.controlPanel.rotationControl]) {
 			newData[dataNames.controlPanel.rotationControl] = threeOptions[defaultThreeOptions];
-			
 		}
 		if (!newData[dataNames.controlPanel.positionControl]) {
 			newData[dataNames.controlPanel.positionControl] = threeOptions[defaultThreeOptions];
@@ -267,13 +271,32 @@ export default class DataEntry extends React.Component {
 				</inputs.ClickerInput>
 			</inputs.LabeledInput>
 		</Row>)
-		teleopRockets.push(<Row key={key++}>
-			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Shots Blocked"} style={dataEntryStyles.gamePieceInput}>
-				<inputs.ClickerInput value={this.props.data[dataNames.shooting.teleBlocked]} onValueChange={(value) => this.dataUpdated(value, dataNames.shooting.teleBlocked)}>
-				</inputs.ClickerInput>
+		// teleopRockets.push(<Row key={key++}>
+		// 	<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Shots Blocked"} style={dataEntryStyles.gamePieceInput}>
+		// 		<inputs.ClickerInput value={this.props.data[dataNames.shooting.teleBlocked]} onValueChange={(value) => this.dataUpdated(value, dataNames.shooting.teleBlocked)}>
+		// 		</inputs.ClickerInput>
+		// 	</inputs.LabeledInput>
+		// </Row>)
+
+		teleopRockets.push(<Row style={{ paddingBottom: 5 }} key={key++}>
+			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Power Cell Capacity"} style={dataEntryStyles.gamePieceInput}>
+				<inputs.SliderInput step={1} minimumValue={0} maximumValue={5} value={this.props.data[dataNames.attributes.powerCellCapacity]} options={gamePieceOptions}
+					onValueChange={(value) => this.dataUpdated(value, dataNames.attributes.powerCellCapacity)}>
+				</inputs.SliderInput>
 			</inputs.LabeledInput>
+		</Row>);
+		
+		teleopRockets.push(<Row style={{ paddingBottom: 5 }} key={key++}>
+			<this.Toggle label="Can it pick up fuel cells from the floor?" variable={dataNames.attributes.powerCellFloor}></this.Toggle>
 		</Row>)
 
+		teleopRockets.push(<Row style={{ paddingBottom: 5 }} key={key++}>
+		<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Number of fuel cells dropped"} style={dataEntryStyles.gamePieceInput}>
+			<inputs.ClickerInput value={this.props.data[dataNames.gameInfo.fuelCellsDropped]} onValueChange={(value) => this.dataUpdated(value, dataNames.gameInfo.fuelCellsDropped)}>
+			</inputs.ClickerInput>
+		</inputs.LabeledInput>
+		</Row>);
+			
 		teleopRockets.push(<Row key={key++}>
 			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"CP Rotation Control"} style={dataEntryStyles.gamePieceInput}>
 				<inputs.PickerInput value={this.props.data[dataNames.controlPanel.rotationControl]} options={threeOptions}
@@ -314,27 +337,19 @@ export default class DataEntry extends React.Component {
 			</inputs.LabeledInput>
 		</Row>)
 
-		teleopRockets.push(<Row key={key++}>
-			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Power Cells picked up from ground"} style={dataEntryStyles.gamePieceInput}>
-				<inputs.ClickerInput value={this.props.data[dataNames.powerCellPickup.fromGround]} onValueChange={(value) => this.dataUpdated(value, dataNames.powerCellPickup.fromGround)}>
-				</inputs.ClickerInput>
-			</inputs.LabeledInput>
-		</Row>)
+		// teleopRockets.push(<Row key={key++}>
+		// 	<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Power Cells picked up from ground"} style={dataEntryStyles.gamePieceInput}>
+		// 		<inputs.ClickerInput value={this.props.data[dataNames.powerCellPickup.fromGround]} onValueChange={(value) => this.dataUpdated(value, dataNames.powerCellPickup.fromGround)}>
+		// 		</inputs.ClickerInput>
+		// 	</inputs.LabeledInput>
+		// </Row>)
 
-		teleopRockets.push(<Row key={key++}>
-			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Power Cells picked up from loading"} style={dataEntryStyles.gamePieceInput}>
-				<inputs.ClickerInput value={this.props.data[dataNames.powerCellPickup.fromLoading]} onValueChange={(value) => this.dataUpdated(value, dataNames.powerCellPickup.fromLoading)}>
-				</inputs.ClickerInput>
-			</inputs.LabeledInput>
-		</Row>)
-
-		teleopRockets.push(<Row style={{ paddingBottom: 5 }} key={key++}>
-			<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Power Cell Capacity"} style={dataEntryStyles.gamePieceInput}>
-				<inputs.SliderInput step={1} minimumValue={0} maximumValue={5} value={this.props.data[dataNames.attributes.powerCellCapacity]} options={gamePieceOptions}
-					onValueChange={(value) => this.dataUpdated(value, dataNames.attributes.powerCellCapacity)}>
-				</inputs.SliderInput>
-			</inputs.LabeledInput>
-		</Row>);
+		// teleopRockets.push(<Row key={key++}>
+		// 	<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Power Cells picked up from loading"} style={dataEntryStyles.gamePieceInput}>
+		// 		<inputs.ClickerInput value={this.props.data[dataNames.powerCellPickup.fromLoading]} onValueChange={(value) => this.dataUpdated(value, dataNames.powerCellPickup.fromLoading)}>
+		// 		</inputs.ClickerInput>
+		// 	</inputs.LabeledInput>
+		// </Row>)
 
 		// END OF TELEOP
 
@@ -447,6 +462,22 @@ export default class DataEntry extends React.Component {
 					}}
 				></inputs.PickerInput>
 				</inputs.LabeledInput>
+				<Spacer></Spacer>
+				<inputs.LabeledInput textStyle={styles.font.dataEntry} label={"Robot Position"} style={dataEntryStyles.gamePieceInput}>
+					<inputs.PickerInput value={this.props.data[dataNames.matchInfo.fieldPos]} options={fieldPosition}
+						onValueChange={(selected) => this.dataUpdated(selected, dataNames.matchInfo.fieldPos)}
+						style={{
+							backgroundColor:
+								this.props.data[dataNames.climbing.balanced] == climbOptions[defaultThreeOptions] ?
+									styles.colors.tertiary.bg : styles.colors.secondary.bg
+						}}
+					></inputs.PickerInput>
+				</inputs.LabeledInput>
+				<View style={addMatchStyles.inputs}>
+					{/* <inputs.LabeledInput textStyle={styles.font.inputHeader} style={addMatchStyles.numberInput} label="Enter a Scout ID">
+					<inputs.NumberInput onChangedText={(newScoutNumber) => this.setState({ scoutName: newScoutNumber })}></inputs.NumberInput>
+					</inputs.LabeledInput> */}
+				</View>
 				{/* Auto phase */}
 				<Row>
 					<Text style={dataEntryStyles.header}>
@@ -477,7 +508,7 @@ export default class DataEntry extends React.Component {
 				<this.Toggle label="Did the robot break?" variable={dataNames.attributes.broken}></this.Toggle>
 				<this.Toggle label="Did the robot tip?" variable={dataNames.attributes.tip}></this.Toggle>
 				{/*<this.Toggle label="Can the robot pick up cargo from the depot?" variable={dataNames.attributes.cargoFromDepot}></this.Toggle>*/}
-				<this.Toggle label="Can it pick up fuel cells from the floor?" variable={dataNames.attributes.powerCellFloor}></this.Toggle>
+				{/* <this.Toggle label="Can it pick up fuel cells from the floor?" variable={dataNames.attributes.powerCellFloor}></this.Toggle> */}
 				<this.Toggle label="Can it go move through the trench?" variable={dataNames.attributes.moveTrench}></this.Toggle>
 
 				{/* <Row>

@@ -103,6 +103,7 @@ export default class AddMatchPopup extends React.Component {
 	state = {
 		teamNumber: 0,
 		matchNumber: 0,
+		scoutName: 0
 		
 	}
 	render() {
@@ -125,6 +126,10 @@ export default class AddMatchPopup extends React.Component {
 					<inputs.LabeledInput textStyle={styles.font.inputHeader} style={addMatchStyles.numberInput} label="Enter a team number">
 						<inputs.NumberInput allowEmpty onValueChange={(newTeamNumber)=>this.setState({teamNumber: newTeamNumber})}></inputs.NumberInput>
 					</inputs.LabeledInput>
+					{/*Scout Name*/}
+					{/* <inputs.LabeledInput textStyle={styles.font.inputHeader} style={addMatchStyles.numberInput} label="Enter a Scout ID">
+						<inputs.NumberInput allowEmpty onValueChange={(newScoutNumber) => this.setState({ scoutName: newScoutNumber })}></inputs.NumberInput>
+					</inputs.LabeledInput> */}
 					<Spacer></Spacer>
 					{/* <inputs.LabeledInput textStyle={styles.font.inputHeader} style={addMatchStyles.numberInput} label="Team colour">
 						<inputs.PickerInput value={this.props.data[dataNames.colourChoice]} options={teamColour}
@@ -153,7 +158,7 @@ export default class AddMatchPopup extends React.Component {
 					{/* Submit button */}
 					<TouchableOpacity
 						disabled={disabled}
-						onPress={() => this.props.onSubmit(this.state.teamNumber, this.state.matchNumber)}
+						onPress={() => this.props.onSubmit(this.state.teamNumber, this.state.matchNumber, this.state.scoutName)}
 						style={addMatchStyles.button}
 					><Text
 							style={[{ ...addMatchStyles.buttonText, fontWeight: "bold" }, disabled ? { color: "#e0e0e0" } : null]}>
